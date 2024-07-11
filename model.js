@@ -6,8 +6,8 @@ const Biomes = {
     Ocean: 'Ocean',
     Jungle: 'Jungle',
     Hallow: 'Hallow',
-    Mushroom: 'Mushroom',
-    Brimstone: 'Brimstone Crag'
+    GlowingMushroom: 'Glowing Mushroom',
+    BrimstoneCrag: 'Brimstone Crag'
 };
 
 const Npcs = {
@@ -82,7 +82,7 @@ const NpcModels = [
     new NpcBuilder(Npcs.PartyGirl).loves(Npcs.Wizard, Npcs.Zoologist).likes(Biomes.Hallow, Npcs.Stylist, Npcs.Princess).dislikes(Biomes.Underground, Npcs.Merchant).hates(Npcs.TaxCollector).build(),
     new NpcBuilder(Npcs.Wizard).loves(Npcs.Golfer).likes(Biomes.Hallow, Npcs.Merchant, Npcs.Princess).dislikes(Biomes.Ocean, Npcs.WitchDoctor).hates(Npcs.Cyborg).build(),
     new NpcBuilder(Npcs.TaxCollector).loves(Npcs.Merchant).likes(Biomes.Snow, Npcs.PartyGirl, Npcs.Princess).dislikes(Biomes.Hallow, Npcs.Demolitionist, Npcs.Mechanic).hates(Npcs.SantaClaus).build(),
-    new NpcBuilder(Npcs.Truffle).loves(Npcs.Guide).likes(Biomes.Mushroom, Npcs.Dryad, Npcs.Princess).dislikes(Npcs.Clothier).hates(Npcs.WitchDoctor).build(),
+    new NpcBuilder(Npcs.Truffle).loves(Npcs.Guide).likes(Biomes.GlowingMushroom, Npcs.Dryad, Npcs.Princess).dislikes(Npcs.Clothier).hates(Npcs.WitchDoctor).build(),
     new NpcBuilder(Npcs.Pirate).loves(Npcs.Angler).likes(Biomes.Ocean, Npcs.Tavernkeep, Npcs.Princess).dislikes(Biomes.Underground, Npcs.Stylist).hates(Npcs.Guide).build(),
     new NpcBuilder(Npcs.Steampunker).loves(Npcs.Cyborg).likes(Biomes.Desert, Npcs.Painter, Npcs.Princess).dislikes(Biomes.Jungle, Npcs.Dryad, Npcs.Wizard, Npcs.PartyGirl).build(),
     new NpcBuilder(Npcs.Cyborg).likes(Biomes.Snow, Npcs.Steampunker, Npcs.Pirate, Npcs.Stylist, Npcs.Princess).dislikes(Biomes.Jungle, Npcs.Zoologist).hates(Npcs.Wizard).build(),
@@ -92,5 +92,5 @@ const NpcModels = [
     new NpcBuilder(Npcs.Bandit).likes(Biomes.Desert, Npcs.GoblinTinkerer, Npcs.Princess).dislikes(Biomes.Jungle, Npcs.Dryad).build(),
     new NpcBuilder(Npcs.DrunkPrincess).loves(Biomes.Hallow, Npcs.Stylist, Npcs.Zoologist).likes(Biomes.Ocean, Npcs.PartyGirl, Npcs.Truffle, Npcs.Princess).dislikes(Biomes.Desert, Npcs.Tavernkeep, Npcs.TaxCollector).hates(Biomes.Underground, Npcs.Angler, Npcs.GoblinTinkerer).build(),
     new NpcBuilder(Npcs.Archmage).likes(Biomes.Snow, Npcs.Wizard, Npcs.Princess).dislikes(Biomes.Desert, Npcs.Cyborg).build(),
-    new NpcBuilder(Npcs.BrimstoneWitch).likes(Biomes.Forest, Npcs.Clothier, Npcs.Princess).dislikes(Biomes.Brimstone, Npcs.PartyGirl).build()
+    new NpcBuilder(Npcs.BrimstoneWitch).likes(Biomes.Forest, Npcs.Clothier, Npcs.Princess).dislikes(Biomes.BrimstoneCrag, Npcs.PartyGirl).build()
 ]
