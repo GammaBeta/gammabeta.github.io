@@ -59,7 +59,6 @@ const NpcBuilder = function(npcName) {
     this.likes = function(things) { this.npc.Liked = this.npc.Liked.concat(Array.from(arguments)); return this; };
     this.dislikes = function(things) { this.npc.Disliked = this.npc.Disliked.concat(Array.from(arguments)); return this; };
     this.hates = function(things) { this.npc.Hated = this.npc.Hated.concat(Array.from(arguments)); return this; };
-    
     this.build = function() { return this.npc };
 }
 
