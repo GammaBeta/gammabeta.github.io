@@ -7,7 +7,7 @@ const Biomes = {
     Jungle: 'Jungle',
     Hallow: 'Hallow',
     Mushroom: 'Mushroom',
-    Brimstone: 'Brimstone Crag (Calamity Mod)'
+    Brimstone: 'Brimstone Crag'
 };
 
 const Npcs = {
@@ -37,11 +37,11 @@ const Npcs = {
     SantaClaus: 'Santa Claus',
     Cyborg: 'Cyborg',
     Princess: 'Princess',
-    SeaKing: 'Sea King (Calamity Mod)',
-    Bandit: 'Bandit (Calamity Mod)',
-    DrunkPrincess: 'Drunk Princess (Calamity Mod)',
-    Archmage: 'Archmage (Calamity Mod)',
-    BrimstoneWitch: 'Brimstone Witch (Calamity Mod)'
+    SeaKing: 'Sea King',
+    Bandit: 'Bandit',
+    DrunkPrincess: 'Drunk Princess',
+    Archmage: 'Archmage',
+    BrimstoneWitch: 'Brimstone Witch'
 };
 
 const NpcBuilder = function(npcName) {
@@ -93,4 +93,4 @@ const NpcModels = [
     new NpcBuilder(Npcs.DrunkPrincess).loves(Biomes.Hallow, Npcs.Stylist, Npcs.Zoologist).likes(Biomes.Ocean, Npcs.PartyGirl, Npcs.Truffle, Npcs.Princess).dislikes(Biomes.Desert, Npcs.Tavernkeep, Npcs.TaxCollector).hates(Biomes.Underground, Npcs.Angler, Npcs.GoblinTinkerer).build(),
     new NpcBuilder(Npcs.Archmage).likes(Biomes.Snow, Npcs.Wizard, Npcs.Princess).dislikes(Biomes.Desert, Npcs.Cyborg).build(),
     new NpcBuilder(Npcs.BrimstoneWitch).likes(Biomes.Forest, Npcs.Clothier, Npcs.Princess).dislikes(Biomes.Brimstone, Npcs.PartyGirl).build()
-].sort((a, b) => a.Name.localeCompare(b.Name));
+]
