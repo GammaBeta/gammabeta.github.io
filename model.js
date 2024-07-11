@@ -1,12 +1,12 @@
 const Biomes = {
     Forest: 'Forest',
     Underground: 'Underground',
-    Desert: 'Desert',
-    Jungle: 'Jungle',
     Snow: 'Snow',
+    Desert: 'Desert',
     Ocean: 'Ocean',
-    Mushroom: 'Mushroom',
-    Hallow: 'Hallow'
+    Jungle: 'Jungle',
+    Hallow: 'Hallow'.
+    Mushroom: 'Mushroom'
 };
 
 const Npcs = {
