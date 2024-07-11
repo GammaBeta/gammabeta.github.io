@@ -22,7 +22,7 @@
         template: `
         <div class="ui-frame">
             <div style='display: flex; width:550px; justify-content: space-evenly'>
-                <img width="35px" v-for='biome in availableBiomes' :src="'images/' + Biomes + '.png'" :title="biome" :class="{ disabled: !biomes.includes(biome) }" v-on:click="toggleBiome(biome)" style="cursor: pointer;" />
+                <img width="35px" v-for='biome in availableBiomes' :src="'images/' + biome + '.png'" :title="biome" :class="{ disabled: !biomes.includes(biome) }" v-on:click="toggleBiome(biome)" style="cursor: pointer;" />
                 
                 <select name="npcs" v-model='selectedNpc' style='margin-left: 20px'>
                     <option v-for='npc in availableNpcs' :value="npc">{{npc.Name}}</option>
