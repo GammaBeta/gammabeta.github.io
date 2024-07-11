@@ -88,5 +88,9 @@ const NpcModels = [
     new NpcBuilder(Npcs.Cyborg).likes(Biomes.Snow, Npcs.Steampunker, Npcs.Pirate, Npcs.Stylist, Npcs.Princess).dislikes(Biomes.Jungle, Npcs.Zoologist).hates(Npcs.Wizard).build(),
     new NpcBuilder(Npcs.SantaClaus).loves(Biomes.Snow).likes(Npcs.Princess).hates(Biomes.Desert, Npcs.TaxCollector).build(),
     new NpcBuilder(Npcs.Princess).loves(...Object.values(Npcs).filter(npc => npc !== "Princess")).build(),
-    new NpcBuilder(Npcs.SeaKing).likes(Biomes.Ocean, Npcs.Pirate, Npcs.Princess).dislikes(Biome.Desert, Npcs.Demolitionist).hates(Npcs.Angler).build()
+    new NpcBuilder(Npcs.SeaKing).likes(Biomes.Ocean, Npcs.Pirate, Npcs.Princess).dislikes(Biome.Desert, Npcs.Demolitionist).hates(Npcs.Angler).build(),
+    new NpcBuilder(Npcs.Bandit).likes(Biomes.Desert, Npcs.GoblinTinkerer, Npcs.Princess).dislikes(Biomes.Jungle, Npcs.Dryad).build(),
+    new NpcBuilder(Npcs.DrunkPrincess).loves(Biomes.Hallow, Npcs.Stylist, Npcs.Zoologist).likes(Biomes.Ocean, Npcs.PartyGirl, Npcs.Truffle, Npcs.Princess).dislikes(Biome.Desert, Npcs.Tavernkeep, Npcs.TaxCollector).hates(Biomes.Underground, Npcs.Angler, Npcs.GoblinTinkerer).build(),
+    new NpcBuilder(Npcs.Archmage).likes(Biomes.Snow, Npcs.Wizard, Npcs.Princess).dislikes(Biome.Desert, Npcs.Cyborg).build(),
+    new NpcBuilder(Npcs.BrimstoneWith).likes(Biomes.Forest, Npcs.Clothier, Npcs.Princess).dislikes(Biome.Brimstone, Npcs.PartyGirl).build()
 ].sort((a, b) => a.Name.localeCompare(b.Name));
