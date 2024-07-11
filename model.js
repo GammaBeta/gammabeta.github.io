@@ -7,7 +7,7 @@ const Biomes = {
     Jungle: 'Jungle',
     Hallow: 'Hallow',
     Mushroom: 'Mushroom',
-    Brimstone: 'Brimstone Crag'
+    Brimstone: 'Brimstone Crag (Calamity Mod)'
 };
 
 const Npcs = {
@@ -37,11 +37,11 @@ const Npcs = {
     SantaClaus: 'Santa Claus',
     Cyborg: 'Cyborg',
     Princess: 'Princess',
-    SeaKing: 'Sea King',
-    Bandit: 'Bandit',
-    DrunkPrincess: 'Drunk Princess',
-    Archmage: 'Archmage',
-    BrimstoneWitch: 'Brimstone Witch'
+    SeaKing: 'Sea King (Calamity Mod)',
+    Bandit: 'Bandit (Calamity Mod)',
+    DrunkPrincess: 'Drunk Princess (Calamity Mod)',
+    Archmage: 'Archmage (Calamity Mod)',
+    BrimstoneWitch: 'Brimstone Witch (Calamity Mod)'
 };
 
 const NpcBuilder = function(npcName) {
