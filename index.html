@@ -21,7 +21,7 @@
     Vue.component('town', {
         template: `
         <div class="ui-frame">
-            <div style='display: flex; width:699px; justify-content: space-evenly'>
+            <div style='display: flex; width:712px; justify-content: space-evenly'>
                 <img width="44px" v-for='biome in availableBiomes' :src="'images/' + biome + '.png'" :title="biome" :class="{ disabled: !biomes.includes(biome) }" v-on:click="toggleBiome(biome)" style="cursor: pointer;" />
                 
                 <select name="npcs" v-model='selectedNpc' style='margin-left: 44px'>
