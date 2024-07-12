@@ -118,5 +118,5 @@ const NpcModels = [
     new NpcBuilder(Npcs.Archmage).likes(Biomes.Snow, Npcs.Wizard, Npcs.Princess).dislikes(Biomes.Desert, Npcs.Cyborg).build(),
     new NpcBuilder(Npcs.BrimstoneWitch).likes(Biomes.Forest, Npcs.Clothier, Npcs.Princess).dislikes(Biomes.BrimstoneCrag, Npcs.PartyGirl).build(),
     //One-Offs
-    new NpcBuilder(Npcs.Automaton).loves(Biomes.Snow, Npcs.Mechanic).likes(Biomes.Forest, Npcs.Mechanic, Npcs.Princess).dislikes(Biomes.Desert, Npcs.Wizard).hates(Biomes.Hallow, Npcs.TaxCollector).build()
+    new NpcBuilder(Npcs.Automaton).loves(Biomes.Snow, Npcs.Mechanic).likes(Biomes.Forest, Npcs.WitchDoctor, Npcs.Princess).dislikes(Biomes.Desert, Npcs.Wizard).hates(Biomes.Hallow, Npcs.TaxCollector).build()
 ]
