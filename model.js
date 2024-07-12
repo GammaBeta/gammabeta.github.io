@@ -55,6 +55,12 @@ const Npcs = {
     DrunkPrincess: 'Drunk Princess',
     Archmage: 'Archmage',
     BrimstoneWitch: 'Brimstone Witch',
+    //Fargo's Mod
+    Lumberjack: 'Lumberjack',
+    Deviantt: 'Deviantt',
+    Abominationn: 'Abominationn',
+    Mutant: 'Mutant',
+    Squirrel: 'Squirrel',
     //One-Offs
     Automaton: 'Automaton' //From Magic Storage
 };
@@ -119,6 +125,11 @@ const NpcModels = [
     new NpcBuilder(Npcs.DrunkPrincess).loves(Biomes.Hallow, Npcs.Stylist, Npcs.Zoologist).likes(Biomes.Ocean, Npcs.PartyGirl, Npcs.Truffle, Npcs.Princess).dislikes(Biomes.Desert, Npcs.Tavernkeep, Npcs.TaxCollector).hates(Biomes.Underground, Npcs.Angler, Npcs.GoblinTinkerer).build(),
     new NpcBuilder(Npcs.Archmage).likes(Biomes.Snow, Npcs.Wizard, Npcs.Princess).dislikes(Biomes.Desert, Npcs.Cyborg).build(),
     new NpcBuilder(Npcs.BrimstoneWitch).likes(Biomes.Forest, Npcs.Clothier, Npcs.Princess).dislikes(Biomes.BrimstoneCrag, Npcs.PartyGirl).build(),
+    //Fargo's Mod
+    new NpcBuilder(Npcs.Lumberjack).loves(Biomes.Forest).likes(Npcs.Squirrel, Npcs.Princess).dislikes(Npcs.Dryad).hates(Npcs.Demolitionist).build(),
+    new NpcBuilder(Npcs.Deviantt).loves(Biomes.Space, Npcs.Mutant).likes(Biomes.Jungle, Npcs.Abominationn, Npcs.Princess).dislikes(Biomes.Snow, Npcs.Zoologist).hates(Biomes.Desert, Npcs.Angler).build(),
+    new NpcBuilder(Npcs.Abominationn).loves(Biomes.Space, Npcs.Mutant).likes(Biomes.Ocean, Npcs.Deviantt, Npcs.Princess).dislikes(Biomes.TheDungeon).hates(Npcs.Nurse).build(),
+    new NpcBuilder(Npcs.Mutant).loves(Biomes.Space, Npcs.Abominationn).likes(Biomes.Forest, Npcs.Deviantt, Npcs.Princess).dislikes(Biomes.Hallow, Npcs.Lumberjack).build(),
     //One-Offs
     new NpcBuilder(Npcs.Automaton).loves(Biomes.Snow, Npcs.Mechanic).likes(Biomes.Forest, Npcs.WitchDoctor, Npcs.Princess).dislikes(Biomes.Desert, Npcs.Wizard).hates(Biomes.Hallow, Npcs.TaxCollector).build()
 ]
