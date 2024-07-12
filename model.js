@@ -108,7 +108,7 @@ const NpcModels = [
     new NpcBuilder(Npcs.Architect).loves(Biomes.Jungle, Npcs.Painter).likes(Biomes.Ocean, Npcs.GoblinTinkerer).dislikes(Biomes.Snow, Npcs.TaxCollector).build(),
     new NpcBuilder(Npcs.Operator).loves(Biomes.Snow, Npcs.Cyborg).likes(Biomes.Ocean, Npcs.Steampunker).dislikes(Biomes.Underground, Npcs.Clothier).build(),
     new NpcBuilder(Npcs.Musician).loves(Biomes.Hallow, Npcs.PartyGirl).likes(Biomes.Underground, Npcs.Wizard).dislikes(Biomes.Snow, Npcs.GoblinTinkerer).build(),
-    new NpcBuilder(Npcs.YoungBrewer).loves(Biomes.Forest, Npcs.Brewer).likes(Biomes.Desert, Npcs.Alchemist).dislikes(Biomes.Snow, Npcs.GoblinTinkerer).build()],
+    new NpcBuilder(Npcs.YoungBrewer).loves(Biomes.Forest, Npcs.Brewer).likes(Biomes.Desert, Npcs.Alchemist).dislikes(Biomes.Snow, Npcs.GoblinTinkerer).build(),
     //Calamity Mod
     new NpcBuilder(Npcs.SeaKing).likes(Biomes.Ocean, Npcs.Pirate, Npcs.Princess).dislikes(Biomes.Desert, Npcs.Demolitionist).hates(Npcs.Angler).build(),
     new NpcBuilder(Npcs.Bandit).likes(Biomes.Desert, Npcs.GoblinTinkerer, Npcs.Princess).dislikes(Biomes.Jungle, Npcs.Dryad).build(),
