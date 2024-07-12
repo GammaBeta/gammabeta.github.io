@@ -5,6 +5,8 @@ const Biomes = {
     Desert: 'Desert',
     Ocean: 'Ocean',
     Jungle: 'Jungle',
+    TheDungeon: 'The Dungeon',
+    Space: 'Space',
     Hallow: 'Hallow',
     GlowingMushroom: 'Glowing Mushroom',
     BrimstoneCrag: 'Brimstone Crag'
