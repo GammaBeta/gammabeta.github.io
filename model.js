@@ -11,7 +11,7 @@ const Biomes = {
 };
 
 const Npcs = {
-    //Vanilla
+    Vanilla: [
     Guide: 'Guide',
     Merchant: 'Merchant',
     Nurse: 'Nurse',
@@ -37,8 +37,8 @@ const Npcs = {
     Steampunker: 'Steampunker',
     SantaClaus: 'Santa Claus',
     Cyborg: 'Cyborg',
-    Princess: 'Princess',
-    //AlchemistNPC
+    Princess: 'Princess'],
+    AlchemistNPC: [
     Alchemist: 'Alchemist',
     Brewer: 'Brewer',
     Jeweler: 'Jeweler',
@@ -46,13 +46,13 @@ const Npcs = {
     Architect: 'Architect',
     Operator: 'Operator',
     Musician: 'Musician',
-    YoungBrewer: 'Young Brewer',
-    //Calamity Mod
+    YoungBrewer: 'Young Brewer'],
+    CalamityMod: [
     SeaKing: 'Sea King',
     Bandit: 'Bandit',
     DrunkPrincess: 'Drunk Princess',
     Archmage: 'Archmage',
-    BrimstoneWitch: 'Brimstone Witch'
+    BrimstoneWitch: 'Brimstone Witch']
 };
 
 const NpcBuilder = function(npcName) {
@@ -72,8 +72,8 @@ const NpcBuilder = function(npcName) {
 }
 
 const NpcModels = [
-    //Vanilla
     //Template: new NpcBuilder(Npcs.Name).loves().likes().dislikes().hates().build(),
+    //Vanilla
     new NpcBuilder(Npcs.Guide).likes(Biomes.Forest, Npcs.Clothier, Npcs.Zoologist, Npcs.Princess).dislikes(Biomes.Ocean, Npcs.Steampunker).hates(Npcs.Painter).build(),
     new NpcBuilder(Npcs.Merchant).likes(Biomes.Forest, Npcs.Golfer, Npcs.Nurse, Npcs.Princess).dislikes(Biomes.Desert, Npcs.TaxCollector).hates(Npcs.Angler).build(),
     new NpcBuilder(Npcs.Nurse).loves(Npcs.ArmsDealer).likes(Biomes.Hallow, Npcs.Wizard, Npcs.Princess).dislikes(Biomes.Snow, Npcs.Dryad, Npcs.PartyGirl).hates(Npcs.Zoologist).build(),
