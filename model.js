@@ -47,7 +47,7 @@ const Npcs = {
     Operator: 'Operator',
     Musician: 'Musician',
     YoungBrewer: 'Young Brewer'],
-    CalamityMod: [
+    Calamity: [
     SeaKing: 'Sea King',
     Bandit: 'Bandit',
     DrunkPrincess: 'Drunk Princess',
@@ -73,7 +73,7 @@ const NpcBuilder = function(npcName) {
 
 const NpcModels = [
     //Template: new NpcBuilder(Npcs.Name).loves().likes().dislikes().hates().build(),
-    //Vanilla
+    Vanilla: [
     new NpcBuilder(Npcs.Guide).likes(Biomes.Forest, Npcs.Clothier, Npcs.Zoologist, Npcs.Princess).dislikes(Biomes.Ocean, Npcs.Steampunker).hates(Npcs.Painter).build(),
     new NpcBuilder(Npcs.Merchant).likes(Biomes.Forest, Npcs.Golfer, Npcs.Nurse, Npcs.Princess).dislikes(Biomes.Desert, Npcs.TaxCollector).hates(Npcs.Angler).build(),
     new NpcBuilder(Npcs.Nurse).loves(Npcs.ArmsDealer).likes(Biomes.Hallow, Npcs.Wizard, Npcs.Princess).dislikes(Biomes.Snow, Npcs.Dryad, Npcs.PartyGirl).hates(Npcs.Zoologist).build(),
@@ -99,8 +99,8 @@ const NpcModels = [
     new NpcBuilder(Npcs.Steampunker).loves(Npcs.Cyborg).likes(Biomes.Desert, Npcs.Painter, Npcs.Princess).dislikes(Biomes.Jungle, Npcs.Dryad, Npcs.Wizard, Npcs.PartyGirl).build(),
     new NpcBuilder(Npcs.Cyborg).likes(Biomes.Snow, Npcs.Steampunker, Npcs.Pirate, Npcs.Stylist, Npcs.Princess).dislikes(Biomes.Jungle, Npcs.Zoologist).hates(Npcs.Wizard).build(),
     new NpcBuilder(Npcs.SantaClaus).loves(Biomes.Snow).likes(Npcs.Princess).hates(Biomes.Desert, Npcs.TaxCollector).build(),
-    new NpcBuilder(Npcs.Princess).loves(...Object.values(Npcs).filter(npc => npc !== "Princess")).build(),
-    //AlchemistNPC
+    new NpcBuilder(Npcs.Princess).loves(...Object.values(Npcs).filter(npc => npc !== "Princess")).build()],
+    AlchemistNPC: [
     new NpcBuilder(Npcs.Alchemist).loves(Biomes.Underground, Npcs.YoungBrewer).likes(Biomes.Forest, Npcs.Mechanic).dislikes(Biomes.Snow, Npcs.Brewer).build(),
     new NpcBuilder(Npcs.Brewer).loves(Biomes.Forest, Npcs.YoungBrewer).likes(Biomes.Jungle, Npcs.Alchemist).dislikes(Biomes.Snow, Npcs.WitchDoctor).build(),
     new NpcBuilder(Npcs.Jeweler).loves(Biomes.Forest, Npcs.Merchant).likes(Biomes.Jungle, Npcs.TaxCollector).dislikes(Biomes.Snow, Npcs.PartyGirl).build(),
@@ -108,11 +108,11 @@ const NpcModels = [
     new NpcBuilder(Npcs.Architect).loves(Biomes.Jungle, Npcs.Painter).likes(Biomes.Ocean, Npcs.GoblinTinkerer).dislikes(Biomes.Snow, Npcs.TaxCollector).build(),
     new NpcBuilder(Npcs.Operator).loves(Biomes.Snow, Npcs.Cyborg).likes(Biomes.Ocean, Npcs.Steampunker).dislikes(Biomes.Underground, Npcs.Clothier).build(),
     new NpcBuilder(Npcs.Musician).loves(Biomes.Hallow, Npcs.PartyGirl).likes(Biomes.Underground, Npcs.Wizard).dislikes(Biomes.Snow, Npcs.GoblinTinkerer).build(),
-    new NpcBuilder(Npcs.YoungBrewer).loves(Biomes.Forest, Npcs.Brewer).likes(Biomes.Desert, Npcs.Alchemist).dislikes(Biomes.Snow, Npcs.GoblinTinkerer).build(),
-    //Calamity Mod
+    new NpcBuilder(Npcs.YoungBrewer).loves(Biomes.Forest, Npcs.Brewer).likes(Biomes.Desert, Npcs.Alchemist).dislikes(Biomes.Snow, Npcs.GoblinTinkerer).build()],
+    Calamity:
     new NpcBuilder(Npcs.SeaKing).likes(Biomes.Ocean, Npcs.Pirate, Npcs.Princess).dislikes(Biomes.Desert, Npcs.Demolitionist).hates(Npcs.Angler).build(),
     new NpcBuilder(Npcs.Bandit).likes(Biomes.Desert, Npcs.GoblinTinkerer, Npcs.Princess).dislikes(Biomes.Jungle, Npcs.Dryad).build(),
     new NpcBuilder(Npcs.DrunkPrincess).loves(Biomes.Hallow, Npcs.Stylist, Npcs.Zoologist).likes(Biomes.Ocean, Npcs.PartyGirl, Npcs.Truffle, Npcs.Princess).dislikes(Biomes.Desert, Npcs.Tavernkeep, Npcs.TaxCollector).hates(Biomes.Underground, Npcs.Angler, Npcs.GoblinTinkerer).build(),
     new NpcBuilder(Npcs.Archmage).likes(Biomes.Snow, Npcs.Wizard, Npcs.Princess).dislikes(Biomes.Desert, Npcs.Cyborg).build(),
-    new NpcBuilder(Npcs.BrimstoneWitch).likes(Biomes.Forest, Npcs.Clothier, Npcs.Princess).dislikes(Biomes.BrimstoneCrag, Npcs.PartyGirl).build()
+    new NpcBuilder(Npcs.BrimstoneWitch).likes(Biomes.Forest, Npcs.Clothier, Npcs.Princess).dislikes(Biomes.BrimstoneCrag, Npcs.PartyGirl).build()]
 ]
