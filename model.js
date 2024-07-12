@@ -54,7 +54,7 @@ const Npcs = {
     Archmage: 'Archmage',
     BrimstoneWitch: 'Brimstone Witch',
     //One-Offs
-    Automaton: 'Automaton' //Magic Storage
+    Automaton: 'Automaton' //From Magic Storage
 };
 
 const NpcBuilder = function(npcName) {
