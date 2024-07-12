@@ -38,7 +38,7 @@ const Npcs = {
     SantaClaus: 'Santa Claus',
     Cyborg: 'Cyborg',
     Princess: 'Princess',
-    //AlchemistNPC Lite
+    //AlchemistNPC
     Alchemist: 'Alchemist',
     Brewer: 'Brewer',
     Jeweler: 'Jeweler',
@@ -102,7 +102,7 @@ const NpcModels = [
     new NpcBuilder(Npcs.Cyborg).likes(Biomes.Snow, Npcs.Steampunker, Npcs.Pirate, Npcs.Stylist, Npcs.Princess).dislikes(Biomes.Jungle, Npcs.Zoologist).hates(Npcs.Wizard).build(),
     new NpcBuilder(Npcs.SantaClaus).loves(Biomes.Snow).likes(Npcs.Princess).hates(Biomes.Desert, Npcs.TaxCollector).build(),
     new NpcBuilder(Npcs.Princess).loves(...Object.values(Npcs).filter(npc => npc !== "Princess")).build(),
-    //AlchemistNPC Lite
+    //AlchemistNPC
     new NpcBuilder(Npcs.Alchemist).loves(Biomes.Underground, Npcs.YoungBrewer).likes(Biomes.Forest, Npcs.Mechanic, Npcs.Princess).dislikes(Biomes.Snow, Npcs.Brewer).build(),
     new NpcBuilder(Npcs.Brewer).loves(Biomes.Forest, Npcs.YoungBrewer).likes(Biomes.Jungle, Npcs.Alchemist, Npcs.Princess).dislikes(Biomes.Snow, Npcs.WitchDoctor).build(),
     new NpcBuilder(Npcs.Jeweler).loves(Biomes.Forest, Npcs.Merchant).likes(Biomes.Jungle, Npcs.TaxCollector, Npcs.Princess).dislikes(Biomes.Snow, Npcs.PartyGirl).build(),
