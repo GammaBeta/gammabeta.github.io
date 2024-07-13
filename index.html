@@ -36,7 +36,9 @@
                 <img width="44px" v-for='biome in availableBiomes' :src="'images/' + biome + '.png'" :title="biome" :class="{ disabled: !biomes.includes(biome) }" v-on:click="toggleBiome(biome)" style="cursor: pointer;" />
                 
                 <select name="npcs" v-model='selectedNpc' style='margin-left: 44px'>
-                    <option v-for='npc in availableNpcs' :value="npc">{{npc.Name}}</option>
+                    <optgroup v-for='(npcs, group) in availableNpcs' :label="group">
+                        <option v-for='npc in npcs' :value="npc">{{npc.Name}}</option>
+                    </optgroup>
                 </select>
                 <button v-on:click='addSelectedNpc()'>Add NPC</button>
             </div>
@@ -108,7 +110,13 @@
           return Object.values(Biomes);
         },
         availableNpcs: function () {
-          return Object.values(NpcModels).flatMap(it => it).filter((npc) => !this.settledNpcs.includes(npc));
+          const available = {}
+          for (const group in NpcModels) {
+            const npcs = NpcModels[group]
+            const filtered = npcs.filter((npc) => !this.settledNpcs.includes(npc))
+            if (filtered.length != 0) available[group] = filtered
+          }
+          return available
         },
         happiness: function () {
           let npcsHappiness = {};
