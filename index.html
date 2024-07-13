@@ -126,8 +126,8 @@
 
             if (npc.Name == "Princess" && this.npcs.length < 3) npcsHappiness[npc.Name] = 150
             else {
-              if (this.npcs.length > 3) {
-                value *= Math.pow(1.05, this.npcs.length - 3);
+              if (this.npcs.length > 4) {
+                value *= Math.pow(1.05, this.npcs.length - 4);
               }
 
               if (this.npcs.length <= 2) {
