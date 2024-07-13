@@ -134,7 +134,6 @@
 
             let biomeMultipliers = this.biomes.map(biome => getHappinessMultiplier(npc, biome))
             if (biomeMultipliers.some(it => it != 1)) {
-              console.log("Non-one multiplier")
               value *= Math.min(...biomeMultipliers.filter(it => it != 1))
             }
 
