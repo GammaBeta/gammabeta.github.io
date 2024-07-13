@@ -63,15 +63,15 @@ const Npcs = {
     Squirrel: 'Squirrel',
     //Thorium Mod
     Cobbler: 'Cobbler',
-    DesertAcolyte: 'DesertAcolyte',
+    DesertAcolyte: 'Desert Acolyte',
     Cook: 'Cook',
-    ConfusedZombie: 'ConfusedZombie',
+    ConfusedZombie: 'Confused Zombie',
     Blacksmith: 'Blacksmith',
     Tracker: 'Tracker',
     Diverman: 'Diverman',
     Druid: 'Druid',
     Spiritualist: 'Spiritualist',
-    WeaponMaster: 'WeaponMaster',
+    WeaponMaster: 'Weapon Master',
     //One-Offs
     Automaton: 'Automaton' //From Magic Storage
 };
