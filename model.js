@@ -61,6 +61,17 @@ const Npcs = {
     Abominationn: 'Abominationn',
     Mutant: 'Mutant',
     Squirrel: 'Squirrel',
+    //Thorium Mod
+    Cobbler: 'Cobbler',
+    DesertAcolyte: 'DesertAcolyte',
+    Cook: 'Cook',
+    ConfusedZombie: 'ConfusedZombie',
+    Blacksmith: 'Blacksmith',
+    Tracker: 'Tracker',
+    Diverman: 'Diverman',
+    Druid: 'Druid',
+    Spiritualist: 'Spiritualist',
+    WeaponMaster: 'WeaponMaster',
     //One-Offs
     Automaton: 'Automaton' //From Magic Storage
 };
@@ -131,6 +142,17 @@ const NpcModels = [
     new NpcBuilder(Npcs.Abominationn).loves(Biomes.Space, Npcs.Mutant).likes(Biomes.Ocean, Npcs.Deviantt, Npcs.Princess).dislikes(Biomes.TheDungeon).hates(Npcs.Nurse).build(),
     new NpcBuilder(Npcs.Mutant).loves(Biomes.Space, Npcs.Abominationn).likes(Biomes.Forest, Npcs.Deviantt, Npcs.Princess).dislikes(Biomes.Hallow, Npcs.Lumberjack).build(),
     new NpcBuilder(Npcs.Squirrel).loves(Biomes.Forest).likes(Npcs.Lumberjack, Npcs.Princess).hates(Biomes.Underground).build(),
+    //Thorium Mod
+    new NpcBuilder(Npcs.Cobbler).loves(Npcs.Zoologist, Npcs.Golfer).likes(Biomes.Forest, Npcs.Spiritualist, Npcs.Princess).dislikes(Biomes.Ocean, Npcs.Druid, Npcs.Dryad, Npcs.Angler).hates(Npcs.Nurse).build(),
+    new NpcBuilder(Npcs.DesertAcolyte).likes(Biomes.Desert, Npcs.Nurse, Npcs.Spiritualist, Npcs.Princess).dislikes(Biomes.Jungle, Npcs.Pirate).hates(Npcs.GoblinTinkerer, Npcs.WitchDoctor, Npcs.WeaponMaster).build(),
+    new NpcBuilder(Npcs.Cook).loves(Npcs.SantaClaus).likes(Biomes.GrowingMushroom, Npcs.Truffle, Npcs.Princess).dislikes(Biomes.Underground, Npcs.Angler).hates(Npcs.Cyborg).build(),
+    new NpcBuilder(Npcs.ConfusedZombie).loves(Npcs.Guide).likes(Biomes.Forest, Npcs.Clothier, Npcs.Princess).dislikes(Biomes.Snow, Npcs.Princess).build(),
+    new NpcBuilder(Npcs.Blacksmith).loves(Npcs.Demolitionist).likes(Biomes.Underground, Npcs.WeaponMaster, Npcs.Princess).dislikes(Npcs.Tracker).build(),
+    new NpcBuilder(Npcs.Tracker).loves(Npcs.Tavernkeep).likes(Biomes.Snow, Npcs.Guide, Npcs.Stylist, Npcs.Princess).dislikes(Biomes.Forest, Npcs.DyeTrader).hates(Npcs.DesertAcolyte).build(),
+    new NpcBuilder(Npcs.Diverman).loves(Npcs.PartyGirl).likes(Biomes.Ocean, Npcs.Pirate, Npcs.Princess).dislikes(Biomes.Desert, Npcs.Angler).build(),
+    new NpcBuilder(Npcs.Druid).likes(Biomes.Jungle, Npcs.Dryad, Npcs.Princess).dislikes(Biomes.Snow, Npcs.Demolitionist).hates(Npcs.Steampunker).build(),
+    new NpcBuilder(Npcs.Spiritualist).loves(Npcs.Stylist).likes(Biomes.Hallow, Npcs.WitchDoctor, Npcs.Princess).dislikes(Biomes.Underground, Npcs.WeaponMaster).hates(Npcs.TaxCollector).build(),
+    new NpcBuilder(Npcs.WeaponMaster).loves(Npcs.TaxCollector).likes(Biomes.Underground, Npcs.GoblinTinkerer, Npcs.WitchDoctor, Npcs.Princess).dislikes(Biomes.Hallow, Npcs.ConfusedZombie, Npcs.Guide).hates(Npcs.Spiritualist).build(),
     //One-Offs
     new NpcBuilder(Npcs.Automaton).loves(Biomes.Snow, Npcs.Mechanic).likes(Biomes.Forest, Npcs.WitchDoctor, Npcs.Princess).dislikes(Biomes.Desert, Npcs.Wizard).hates(Biomes.Hallow, Npcs.TaxCollector).build()
 ]
