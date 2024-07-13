@@ -132,19 +132,16 @@
               value *= 0.95;
             }
 
-            let townContent = this.biomes.concat(this.npcs.map((n) => n.Name));
-            townContent
-              .filter((c) => npc.Loved.includes(c))
-              .forEach((c) => (value *= 0.88));
-            townContent
-              .filter((c) => npc.Liked.includes(c))
-              .forEach((c) => (value *= 0.94));
-            townContent
-              .filter((c) => npc.Disliked.includes(c))
-              .forEach((c) => (value *= 1.06));
-            townContent
-              .filter((c) => npc.Hated.includes(c))
-              .forEach((c) => (value *= 1.12));
+            let biomeMultipliers = this.biomes.map(biome => getHappinessMultiplier(npc, biome))
+            if (biomeMultipliers.some(it => it != 1)) {
+              console.log("Non-one multiplier")
+              value *= Math.min(...biomeMultipliers.filter(it => it != 1))
+            }
+
+            this.npcs
+              .map((n) => n.Name)
+              .map(other => getHappinessMultiplier(npc, other))
+              .forEach(mult => value *= mult);
 
             let mod = value % 1;
             let rounding = mod < 0.5 ? 0 : 1;
