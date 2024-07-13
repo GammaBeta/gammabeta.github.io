@@ -9,7 +9,7 @@ const Biomes = {
     Space: 'Space',
     Hallow: 'Hallow',
     Mushroom: 'Mushroom',
-    Brimstone: 'Brimstone'
+    Crag: 'Crag'
 };
 
 const Npcs = {
@@ -54,7 +54,7 @@ const Npcs = {
     Bandit: 'Bandit',
     DrunkPrincess: 'Drunk Princess',
     Archmage: 'Archmage',
-    BrimstoneWitch: 'Brimstone Witch',
+    CragWitch: 'Crag Witch',
     //Fargo's Mod
     LumberJack: 'LumberJack',
     Deviantt: 'Deviantt',
@@ -135,7 +135,7 @@ const NpcModels = [
     new NpcBuilder(Npcs.Bandit).likes(Biomes.Desert, Npcs.GoblinTinkerer, Npcs.Princess).dislikes(Biomes.Jungle, Npcs.Dryad).build(),
     new NpcBuilder(Npcs.DrunkPrincess).loves(Biomes.Hallow, Npcs.Stylist, Npcs.Zoologist).likes(Biomes.Ocean, Npcs.PartyGirl, Npcs.Truffle, Npcs.Princess).dislikes(Biomes.Desert, Npcs.Tavernkeep, Npcs.TaxCollector).hates(Biomes.Underground, Npcs.Angler, Npcs.GoblinTinkerer).build(),
     new NpcBuilder(Npcs.Archmage).likes(Biomes.Snow, Npcs.Wizard, Npcs.Princess).dislikes(Biomes.Desert, Npcs.Cyborg).build(),
-    new NpcBuilder(Npcs.BrimstoneWitch).likes(Biomes.Forest, Npcs.Clothier, Npcs.Princess).dislikes(Biomes.Brimstone, Npcs.PartyGirl).build(),
+    new NpcBuilder(Npcs.CragWitch).likes(Biomes.Forest, Npcs.Clothier, Npcs.Princess).dislikes(Biomes.Crag, Npcs.PartyGirl).build(),
     //Fargo's Mod
     new NpcBuilder(Npcs.LumberJack).loves(Biomes.Forest).likes(Npcs.Squirrel, Npcs.Princess).dislikes(Npcs.Dryad).hates(Npcs.Demolitionist).build(),
     new NpcBuilder(Npcs.Deviantt).loves(Biomes.Space, Npcs.Mutant).likes(Biomes.Jungle, Npcs.Abominationn, Npcs.Princess).dislikes(Biomes.Snow, Npcs.Zoologist).hates(Biomes.Desert, Npcs.Angler).build(),
