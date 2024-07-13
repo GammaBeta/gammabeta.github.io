@@ -140,8 +140,8 @@ const NpcModels = [
     new NpcBuilder(Npcs.LumberJack).loves(Biomes.Forest).likes(Npcs.Squirrel, Npcs.Princess).dislikes(Npcs.Dryad).hates(Npcs.Demolitionist).build(),
     new NpcBuilder(Npcs.Deviantt).loves(Biomes.Space, Npcs.Mutant).likes(Biomes.Jungle, Npcs.Abominationn, Npcs.Princess).dislikes(Biomes.Snow, Npcs.Zoologist).hates(Biomes.Desert, Npcs.Angler).build(),
     new NpcBuilder(Npcs.Abominationn).loves(Biomes.Space, Npcs.Mutant).likes(Biomes.Ocean, Npcs.Deviantt, Npcs.Princess).dislikes(Biomes.TheDungeon).hates(Npcs.Nurse).build(),
-    new NpcBuilder(Npcs.Mutant).loves(Biomes.Space, Npcs.Abominationn).likes(Biomes.Forest, Npcs.Deviantt, Npcs.Princess).dislikes(Biomes.Hallow, Npcs.Lumberjack).build(),
-    new NpcBuilder(Npcs.Squirrel).loves(Biomes.Forest).likes(Npcs.Lumberjack, Npcs.Princess).hates(Biomes.Underground).build(),
+    new NpcBuilder(Npcs.Mutant).loves(Biomes.Space, Npcs.Abominationn).likes(Biomes.Forest, Npcs.Deviantt, Npcs.Princess).dislikes(Biomes.Hallow, Npcs.LumberJack).build(),
+    new NpcBuilder(Npcs.Squirrel).loves(Biomes.Forest).likes(Npcs.LumberJack, Npcs.Princess).hates(Biomes.Underground).build(),
     //Thorium Mod
     new NpcBuilder(Npcs.Cobbler).loves(Npcs.Zoologist, Npcs.Golfer).likes(Biomes.Forest, Npcs.Spiritualist, Npcs.Princess).dislikes(Biomes.Ocean, Npcs.Druid, Npcs.Dryad, Npcs.Angler).hates(Npcs.Nurse).build(),
     new NpcBuilder(Npcs.DesertAcolyte).likes(Biomes.Desert, Npcs.Nurse, Npcs.Spiritualist, Npcs.Princess).dislikes(Biomes.Jungle, Npcs.Pirate).hates(Npcs.GoblinTinkerer, Npcs.WitchDoctor, Npcs.WeaponMaster).build(),
