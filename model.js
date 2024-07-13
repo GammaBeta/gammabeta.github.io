@@ -54,7 +54,7 @@ const Npcs = {
   Bandit: "Bandit",
   DrunkPrincess: "Drunk Princess",
   Archmage: "Archmage",
-  BrimstoneWitch: "BrimstoneWitch",
+  BrimstoneWitch: "Brimstone Witch",
   //Fargo's Mod
   LumberJack: "LumberJack",
   Deviantt: "Deviantt",
