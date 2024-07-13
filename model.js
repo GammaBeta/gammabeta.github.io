@@ -54,7 +54,7 @@ const Npcs = {
   Bandit: "Bandit",
   DrunkPrincess: "Drunk Princess",
   Archmage: "Archmage",
-  CragWitch: "Crag Witch",
+  BrimstoneWitch: "BrimstoneWitch",
   //Fargo's Mod
   LumberJack: "LumberJack",
   Deviantt: "Deviantt",
@@ -107,8 +107,6 @@ const NpcBuilder = function (npcName) {
 };
 
 const NpcModels = {
-  //Template: new NpcBuilder(Npcs.Name).loves().likes().dislikes().hates().build(),
-  //Vanilla
   Vanilla: [
     new NpcBuilder(Npcs.Guide)
       .likes(Biomes.Forest, Npcs.Clothier, Npcs.Zoologist, Npcs.Princess)
@@ -265,7 +263,6 @@ const NpcModels = {
       .loves(...Object.values(Npcs).filter((npc) => npc !== "Princess"))
       .build(),
   ],
-  //AlchemistNPC
   AlchemistNPC: [
     new NpcBuilder(Npcs.Alchemist)
       .loves(Biomes.Underground, Npcs.YoungBrewer)
@@ -309,7 +306,6 @@ const NpcModels = {
       .build(),
   ],
   Calamity: [
-    //Calamity Mod
     new NpcBuilder(Npcs.SeaKing)
       .likes(Biomes.Ocean, Npcs.Pirate, Npcs.Princess)
       .dislikes(Biomes.Desert, Npcs.Demolitionist)
@@ -329,12 +325,11 @@ const NpcModels = {
       .likes(Biomes.Snow, Npcs.Wizard, Npcs.Princess)
       .dislikes(Biomes.Desert, Npcs.Cyborg)
       .build(),
-    new NpcBuilder(Npcs.CragWitch)
+    new NpcBuilder(Npcs.BrimstoneWitch)
       .likes(Biomes.Forest, Npcs.Clothier, Npcs.Princess)
       .dislikes(Biomes.Crag, Npcs.PartyGirl)
       .build(),
   ],
-  //Fargo's Mod
   Fargos: [
     new NpcBuilder(Npcs.LumberJack)
       .loves(Biomes.Forest)
@@ -366,7 +361,6 @@ const NpcModels = {
       .build(),
   ],
   Thorium: [
-    //Thorium Mod
     new NpcBuilder(Npcs.Cobbler)
       .loves(Npcs.Zoologist, Npcs.Golfer)
       .likes(Biomes.Forest, Npcs.Spiritualist, Npcs.Princess)
@@ -428,7 +422,6 @@ const NpcModels = {
       .hates(Npcs.Spiritualist)
       .build(),
   ],
-  //One-Offs
   OneOffs: [
     new NpcBuilder(Npcs.Automaton)
       .loves(Biomes.Snow, Npcs.Mechanic)
