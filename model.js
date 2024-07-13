@@ -1,15 +1,15 @@
 const Biomes = {
-    Forest: 'Forest',
-    Underground: 'Underground',
-    Snow: 'Snow',
-    Desert: 'Desert',
-    Ocean: 'Ocean',
-    Jungle: 'Jungle',
-    TheDungeon: 'The Dungeon',
+    Forest: 'The Forest',
+    Underground: 'The Underground',
+    Snow: 'The Snow Biome',
+    Desert: 'The Desert',
+    Ocean: 'The Ocean',
+    Jungle: 'The Jungle',
+    Dungeon: 'The Dungeon',
     Space: 'Space',
-    Hallow: 'Hallow',
-    GlowingMushroom: 'Glowing Mushroom',
-    BrimstoneCrag: 'Brimstone Crag'
+    Hallow: 'The Hallow',
+    Mushroom: 'The Glowing Mushroom Biome',
+    Brimstone: 'The Brimstone Crag'
 };
 
 const Npcs = {
