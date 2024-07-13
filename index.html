@@ -59,9 +59,9 @@
         `,
       created: function () {
         if (this.id === 1) {
-          this.npcs.push(NpcModels.filter((npc) => npc.Name === "Guide")[0]);
+          this.npcs.push(NpcModels.Vanilla.filter((npc) => npc.Name === "Guide")[0]);
           this.settledNpcs.push(
-            NpcModels.filter((npc) => npc.Name === "Guide")[0]
+            NpcModels.Vanilla.filter((npc) => npc.Name === "Guide")[0]
           );
           this.biomes.push(Biomes.Forest);
         }
@@ -108,7 +108,7 @@
           return Object.values(Biomes);
         },
         availableNpcs: function () {
-          return NpcModels.filter((npc) => !this.settledNpcs.includes(npc));
+          return Object.values(NpcModels).flatMap(it => it).filter((npc) => !this.settledNpcs.includes(npc));
         },
         happiness: function () {
           let npcsHappiness = {};
