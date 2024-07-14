@@ -431,11 +431,3 @@ const NpcModels = {
       .build(),
   ],
 };
-
-function getHappinessMultiplier(npc, thing) {
-  if (npc.Loved.includes(thing)) return 0.88;
-  if (npc.Liked.includes(thing)) return 0.94;
-  if (npc.Disliked.includes(thing)) return 1.06;
-  if (npc.Hated.includes(thing)) return 1.12;
-  return 1;
-}

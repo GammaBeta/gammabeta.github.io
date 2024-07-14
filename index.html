@@ -3,6 +3,7 @@
   <head>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="model.js"></script>
+    <script src="happiness.js"></script>
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" href="images/Favicon.ico" />
     <title>Terraria NPC Happiness Calculator Plus</title>
@@ -122,33 +123,7 @@
           let npcsHappiness = {};
 
           this.npcs.forEach((npc) => {
-            let value = 100.0;
-
-            if (npc.Name == "Princess" && this.npcs.length < 3) npcsHappiness[npc.Name] = 150
-            else {
-              if (this.npcs.length > 4) {
-                value *= Math.pow(1.05, this.npcs.length - 4);
-              }
-
-              if (this.npcs.length <= 3) {
-                value *= 0.95;
-              }
-
-              let biomeMultipliers = this.biomes.map(biome => getHappinessMultiplier(npc, biome))
-              if (biomeMultipliers.some(it => it != 1)) {
-                value *= Math.min(...biomeMultipliers.filter(it => it != 1))
-              }
-
-              this.npcs
-                .map((n) => n.Name)
-                .map(other => getHappinessMultiplier(npc, other))
-                .forEach(mult => value *= mult);
-
-              value = Math.round(value);
-              value = Math.max(value, 75);
-              value = Math.min(value, 150);
-              npcsHappiness[npc.Name] = value.toFixed(0);
-            }
+            npcsHappiness[npc.Name] = getHappiness(npc, this.npcs, this.biomes);
           });
 
           return npcsHappiness;
