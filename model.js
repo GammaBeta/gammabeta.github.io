@@ -107,7 +107,7 @@ const NpcBuilder = function (npcName) {
 };
 
 const NpcModels = {
-  "Vanilla": [
+  Vanilla: [
     new NpcBuilder(Npcs.Guide)
       .likes(Biomes.Forest, Npcs.Clothier, Npcs.Zoologist, Npcs.Princess)
       .dislikes(Biomes.Ocean, Npcs.Steampunker)
@@ -263,7 +263,7 @@ const NpcModels = {
       .loves(...Object.values(Npcs).filter((npc) => npc !== "Princess"))
       .build(),
   ],
-  "AlchemistNPC": [
+  AlchemistNPC: [
     new NpcBuilder(Npcs.Alchemist)
       .loves(Biomes.Underground, Npcs.YoungBrewer)
       .likes(Biomes.Forest, Npcs.Mechanic, Npcs.Princess)
@@ -305,7 +305,7 @@ const NpcModels = {
       .dislikes(Biomes.Snow, Npcs.GoblinTinkerer)
       .build(),
   ],
-  "Calamity Mod": [
+  Calamity: [
     new NpcBuilder(Npcs.SeaKing)
       .likes(Biomes.Ocean, Npcs.Pirate, Npcs.Princess)
       .dislikes(Biomes.Desert, Npcs.Demolitionist)
@@ -330,7 +330,7 @@ const NpcModels = {
       .dislikes(Biomes.Crag, Npcs.PartyGirl)
       .build(),
   ],
-  "Fargo's Mod": [
+  Fargo: [
     new NpcBuilder(Npcs.LumberJack)
       .loves(Biomes.Forest)
       .likes(Npcs.Squirrel, Npcs.Princess)
@@ -360,7 +360,7 @@ const NpcModels = {
       .hates(Biomes.Underground)
       .build(),
   ],
-  "Thorium Mod": [
+  Thorium: [
     new NpcBuilder(Npcs.Cobbler)
       .loves(Npcs.Zoologist, Npcs.Golfer)
       .likes(Biomes.Forest, Npcs.Spiritualist, Npcs.Princess)
@@ -422,7 +422,7 @@ const NpcModels = {
       .hates(Npcs.Spiritualist)
       .build(),
   ],
-  "One-Offs": [
+  OneOffs: [
     new NpcBuilder(Npcs.Automaton)
       .loves(Biomes.Snow, Npcs.Mechanic)
       .likes(Biomes.Forest, Npcs.WitchDoctor, Npcs.Princess)
