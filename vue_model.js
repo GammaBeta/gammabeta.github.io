@@ -38,7 +38,7 @@ Vue.component("town", {
                   <div>Dislikes: </div>
                   <div>Hates: </div>
                 </div>
-              </div
+          </div>
             </div>
         </div>
     </div>
