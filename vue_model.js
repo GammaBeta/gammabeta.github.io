@@ -32,7 +32,7 @@ Vue.component("town", {
             <div class="name">{{npc.Name}}</div>
             <div :class="{ happy: happiness[npc.Name] <= 90, sad: happiness[npc.Name] > 100 }">{{happiness[npc.Name]}}%</div>
             <div class="remove" v-on:click="removeNpc(npc)" title="Remove from town">X</div>
-            <div class="tooltip" style="width: 124px;">
+            <div class="tooltip" style="width: 116px;">
               <div>Loves: Every NPC</div>
               <div>Likes: </div>
               <div>Dislikes: </div>
