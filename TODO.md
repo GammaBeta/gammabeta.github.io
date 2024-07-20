@@ -1,0 +1,4 @@
+[] Tooltips don't cover the NPCs
+[] Tooltips show on other side if too close to edge
+[] NPC selection dropdown stays same size
+[] Town removal
