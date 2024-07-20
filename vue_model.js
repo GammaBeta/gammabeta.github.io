@@ -36,7 +36,7 @@ Vue.component("town", {
               <div>Loves: Every NPC</div>
               <div>Likes: </div>
               <div>Dislikes: </div>
-              <div>Hates: </div>
+              <div>Hates: Being alone</div>
             </div>
           </div>
         </div>
