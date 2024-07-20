@@ -10,7 +10,7 @@ Vue.component("town", {
                 </optgroup>
             </select>
             <button v-on:click='addSelectedNpc()'>Add NPC</button>
-            <button @click='removeTown'>Remove Town</button>
+            <!--<button @click='removeTown'>Remove Town</button>-->
         </div>
         
         <div style="display: flex; flex-direction: row; flex-wrap: wrap;">
@@ -61,7 +61,7 @@ Vue.component("town", {
 
       npcs: [],
       biomes: [],
-      townUIWidth: (Object.values(Biomes).length + 2) * 44 + 251 + 106,
+      townUIWidth: (Object.values(Biomes).length + 2) * 44 + 251, // + 106,
     };
   },
   props: {
