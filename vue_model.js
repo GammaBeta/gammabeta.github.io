@@ -13,7 +13,7 @@ Vue.component("town", {
             <!--<button @click='removeTown'>Remove Town</button>-->
         </div>
         
-        <div style="display: flex; flex-direction: row; flex-wrap: wrap;">
+        <div style="display: flex; flex-direction: row; flex-wrap: wrap; min-height: 105px;">
             <div class="npc" v-for='npc in npcs'>
               <div v-if='npc.Name != "Princess"'>
                 <img :src="'images/' + npc.Name.replace(' ', '') + '.png'" />
