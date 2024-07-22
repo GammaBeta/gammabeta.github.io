@@ -318,7 +318,7 @@ const NpcModels = {
       .dislikes(Biomes.Crag, Npcs.PartyGirl)
       .build(),
   ],
-  Fargo: [
+  "Fargo's Mod": [
     new NpcBuilder(Npcs.LumberJack)
       .loves(Biomes.Forest)
       .likes(Npcs.Squirrel, Npcs.Princess)
@@ -405,7 +405,7 @@ const NpcModels = {
       .hates(Npcs.Spiritualist)
       .build(),
   ],
-  OneOffs: [
+  "One Offs": [
     new NpcBuilder(Npcs.Automaton)
       .loves(Biomes.Snow, Npcs.Mechanic)
       .likes(Biomes.Forest, Npcs.WitchDoctor, Npcs.Princess)
