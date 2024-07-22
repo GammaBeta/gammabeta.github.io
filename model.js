@@ -135,13 +135,7 @@ const NpcModels = {
       .hates(Npcs.Pirate)
       .build(),
     new NpcBuilder(Npcs.Angler)
-      .likes(
-        Biomes.Ocean,
-        Npcs.Demolitionist,
-        Npcs.PartyGirl,
-        Npcs.TaxCollector,
-        Npcs.Princess
-      )
+      .likes(Biomes.Ocean, Npcs.Demolitionist, Npcs.PartyGirl, Npcs.TaxCollector, Npcs.Princess)
       .dislikes(Biomes.Desert)
       .hates(Npcs.Tavernkeep)
       .build(),
@@ -244,13 +238,7 @@ const NpcModels = {
       .dislikes(Biomes.Jungle, Npcs.Dryad, Npcs.Wizard, Npcs.PartyGirl)
       .build(),
     new NpcBuilder(Npcs.Cyborg)
-      .likes(
-        Biomes.Snow,
-        Npcs.Steampunker,
-        Npcs.Pirate,
-        Npcs.Stylist,
-        Npcs.Princess
-      )
+      .likes(Biomes.Snow, Npcs.Steampunker, Npcs.Pirate, Npcs.Stylist, Npcs.Princess)
       .dislikes(Biomes.Jungle, Npcs.Zoologist)
       .hates(Npcs.Wizard)
       .build(),
@@ -374,7 +362,7 @@ const NpcModels = {
       .build(),
     new NpcBuilder(Npcs.Cook)
       .loves(Npcs.SantaClaus)
-      .likes(Biomes.GrowingMushroom, Npcs.Truffle, Npcs.Princess)
+      .likes(Biomes.Mushroom, Npcs.Truffle, Npcs.Princess)
       .dislikes(Biomes.Underground, Npcs.Angler)
       .hates(Npcs.Cyborg)
       .build(),
@@ -412,12 +400,7 @@ const NpcModels = {
       .build(),
     new NpcBuilder(Npcs.WeaponMaster)
       .loves(Npcs.TaxCollector)
-      .likes(
-        Biomes.Underground,
-        Npcs.GoblinTinkerer,
-        Npcs.WitchDoctor,
-        Npcs.Princess
-      )
+      .likes(Biomes.Underground, Npcs.GoblinTinkerer, Npcs.WitchDoctor, Npcs.Princess)
       .dislikes(Biomes.Hallow, Npcs.ConfusedZombie, Npcs.Guide)
       .hates(Npcs.Spiritualist)
       .build(),
