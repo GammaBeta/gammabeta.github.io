@@ -26,7 +26,7 @@ function getHappiness(npc, npcs, biomes) {
     value = Math.round(value);
     value = Math.max(value, 75);
     value = Math.min(value, 150);
-    return value.toFixed(0);
+    return value;
   }
 }
 
