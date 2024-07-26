@@ -26,12 +26,12 @@ Vue.component("npc", {
   },
   data() {
     return {
-      imageUrl: "images/" + this.npc.Name.replace(" ", "") + ".png",
+      imageUrl: "images/" + this.npc.Name.replaceAll(" ", "") + ".png",
     };
   },
   methods: {
     emoteImage(name) {
-      return "images/emotes/" + name.replace(" ", "") + ".png";
+      return "images/emotes/" + name.replaceAll(" ", "") + ".png";
     },
     removeNpc() {
       this.$emit("removeNpc");
@@ -97,7 +97,7 @@ Vue.component("town", {
       this.$emit("removeTown", this.id);
     },
     biomeImage(biome) {
-      return "images/" + biome + ".png";
+      return "images/" + biome.replaceAll(" ", "") + ".png";
     },
   },
 });
