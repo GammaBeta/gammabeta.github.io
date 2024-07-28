@@ -1,3 +1,25 @@
+Vue.component("biome", {
+  template: `
+    <div class="biomeButton" @click="toggle" :class="{ disabled: !enabled }" :title="name">
+      <img :src="image" />
+    </div>
+  `,
+  props: {
+    name: String,
+    enabled: Boolean,
+  },
+  data() {
+    return {
+      image: "images/emotes/" + this.name.replaceAll(" ", "") + ".png",
+    };
+  },
+  methods: {
+    toggle() {
+      this.$emit("toggle", this.name);
+    },
+  },
+});
+
 Vue.component("npc", {
   template: `
     <div class="npc">
@@ -48,9 +70,9 @@ Vue.component("town", {
   template: `
     <div class="ui-frame town">
       <div style='display: flex; justify-content: space-evenly' :style="{width: townUIWidth + 'px'}">
-        <img width="44px" v-for='biome in biomes'
-          :src="biomeImage(biome)" :title="biome" :class="{ disabled: !townData.biomes.includes(biome) }"
-          @click="toggleBiome(biome)" style="cursor: pointer;" />
+        <biome v-for="biome in biomes" :key="biome"
+          :name="biome" :enabled="townData.biomes.includes(biome)"
+          @toggle="toggleBiome"></biome>
             
         <select name="npcs" v-model='selectedNpc' style='margin-left: 44px; width: 150px;'>
           <optgroup v-for='(npcs, group) in availableNpcs' :label="group">
