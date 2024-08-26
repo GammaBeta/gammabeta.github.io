@@ -66,6 +66,8 @@ Vue.component("npc", {
       const bounds = tooltip.getBoundingClientRect();
       if (bounds.right > window.innerWidth) {
         this.styleObj.left = -bounds.width + "px";
+      } else {
+        this.styleObj.left = "100%";
       }
     },
   },
