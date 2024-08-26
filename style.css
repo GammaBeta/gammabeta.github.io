@@ -105,7 +105,6 @@ a {
   display: none;
   position: absolute;
   top: 0;
-  left: 100%;
   z-index: 20;
   cursor: default;
 }

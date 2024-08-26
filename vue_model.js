@@ -22,18 +22,18 @@ Vue.component("biome", {
 
 Vue.component("npc", {
   template: `
-    <div class="npc">
+    <div class="npc" @mouseenter="onHover">
       <img :src="imageUrl" />
       <div class="name">{{this.npc.Name}}</div>
       <div :class="{ happy: this.happiness <= 90, sad: this.happiness > 100 }" v-text="this.happiness + '%'"></div>
       <div class="remove" @click="removeNpc" title="Remove from town">X</div>
-      <div class="tooltip" v-if='this.npc.Name == "Princess"' style="width: 116px;">
+      <div class="tooltip" :style="styleObj" v-if='this.npc.Name == "Princess"' style="width: 116px;">
         <div>Loves: Every NPC</div>
         <div>Likes: </div>
         <div>Dislikes: </div>
         <div>Hates: Being alone</div>
       </div>
-      <div class="tooltip" v-else>
+      <div class="tooltip" :style="styleObj" v-else>
         <div>Loves: <img v-for="love in npc.Loved" :src="emoteImage(love)" :title="love"></div>
         <div>Likes: <img v-for="like in npc.Liked" :src="emoteImage(like)" :title="like"></div>
         <div>Dislikes: <img v-for="dislike in npc.Disliked" :src="emoteImage(dislike)" :title="dislike"></div>
@@ -49,6 +49,9 @@ Vue.component("npc", {
   data() {
     return {
       imageUrl: "images/" + this.npc.Name.replaceAll(" ", "") + ".png",
+      styleObj: {
+        left: "100%",
+      },
     };
   },
   methods: {
@@ -57,6 +60,13 @@ Vue.component("npc", {
     },
     removeNpc() {
       this.$emit("removeNpc");
+    },
+    onHover() {
+      const tooltip = this.$el.getElementsByClassName("tooltip")[0];
+      const bounds = tooltip.getBoundingClientRect();
+      if (bounds.right > window.innerWidth) {
+        this.styleObj.left = -bounds.width + "px";
+      }
     },
   },
   computed: {
@@ -84,7 +94,7 @@ Vue.component("town", {
       </div>
         
       <div style="display: flex; flex-direction: row; flex-wrap: wrap; min-height: 105px;">
-        <npc class="npc" v-for='(npc, i) in townData.npcs' :key="npc.Name"
+        <npc v-for='(npc, i) in townData.npcs' :key="npc.Name"
           :npc="npc" :npcs="townData.npcs" :biomes="townData.biomes"
           @removeNpc="removeNpc(npc)"></npc>
       </div>
@@ -142,7 +152,10 @@ let app = new Vue({
     settledNpcs: [],
   },
   created() {
-    this.towns.push({ npcs: [NpcModels.Vanilla[0]], biomes: [Biomes.Forest] });
+    this.towns.push({
+      npcs: [NpcModels.Vanilla[0]],
+      biomes: [Biomes.Forest],
+    });
   },
   methods: {
     createTown() {
