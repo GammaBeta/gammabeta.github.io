@@ -77,7 +77,7 @@ Vue.component("npc", {
     },
     tooltipWidth() {
       return (
-        50 +
+        55 +
         Math.max(
           this.npc.Loved.length,
           this.npc.Liked.length,
