@@ -62,10 +62,10 @@ Vue.component("npc", {
       this.$emit("removeNpc");
     },
     onHover() {
-      const tooltip = this.$el.getElementsByClassName("tooltip")[0];
-      const bounds = tooltip.getBoundingClientRect();
-      if (bounds.right > window.innerWidth) {
-        this.styleObj.left = -bounds.width + "px";
+      const npcBounds = this.$el.getBoundingClientRect();
+      const npcRight = npcBounds.x + npcBounds.width;
+      if (this.tooltipWidth + npcRight > window.innerWidth) {
+        this.styleObj.left = -this.tooltipWidth + "px";
       } else {
         this.styleObj.left = "100%";
       }
@@ -74,6 +74,18 @@ Vue.component("npc", {
   computed: {
     happiness() {
       return getHappiness(this.npc, this.npcs, this.biomes);
+    },
+    tooltipWidth() {
+      return (
+        50 +
+        Math.max(
+          this.npc.Loved.length,
+          this.npc.Liked.length,
+          this.npc.Disliked.length,
+          this.npc.Hated.length
+        ) *
+          32
+      );
     },
   },
 });
