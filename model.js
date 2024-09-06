@@ -50,7 +50,7 @@ const Npcs = {
   Operator: "Operator",
   Musician: "Musician",
   YoungBrewer: "Young Brewer",
-   //Bosses as NPCs
+  //Bosses as NPCs
   KingSlime: "King Slime",
   TorchGod: "Torch God",
   EyeOfCthulhu: "Eye of Cthulhu",
@@ -107,28 +107,64 @@ const Npcs = {
 const NpcBuilder = function (npcName) {
   this.npc = {
     Name: npcName,
-    Loved: [],
-    Liked: [],
-    Disliked: [],
-    Hated: [],
+    Loved: {
+      Biome: null,
+      NPCs: [],
+    },
+    Liked: {
+      Biome: null,
+      NPCs: [],
+    },
+    Disliked: {
+      Biome: null,
+      NPCs: [],
+    },
+    Hated: {
+      Biome: null,
+      NPCs: [],
+    },
   };
 
-  this.loves = function (...things) {
-    this.npc.Loved = this.npc.Loved.concat(Array.from(things));
+  this.lovesBiome = function (biome) {
+    this.npc.Loved.Biome = biome;
     return this;
   };
-  this.likes = function (...things) {
-    this.npc.Liked = this.npc.Liked.concat(Array.from(things));
+
+  this.lovesNPCs = function (...things) {
+    this.npc.Loved.NPCs = this.npc.Loved.NPCs.concat(Array.from(things));
     return this;
   };
-  this.dislikes = function (...things) {
-    this.npc.Disliked = this.npc.Disliked.concat(Array.from(things));
+
+  this.likesBiome = function (biome) {
+    this.npc.Liked.Biome = biome;
     return this;
   };
-  this.hates = function (...things) {
-    this.npc.Hated = this.npc.Hated.concat(Array.from(things));
+
+  this.likesNPCs = function (...things) {
+    this.npc.Liked.NPCs = this.npc.Liked.NPCs.concat(Array.from(things));
     return this;
   };
+
+  this.dislikesBiome = function (biome) {
+    this.npc.Disliked.Biome = biome;
+    return this;
+  };
+
+  this.dislikesNPCs = function (...things) {
+    this.npc.Disliked.NPCs = this.npc.Disliked.NPCs.concat(Array.from(things));
+    return this;
+  };
+
+  this.hatesBiome = function (biome) {
+    this.npc.Hated.Biome = biome;
+    return this;
+  };
+
+  this.hatesNPCs = function (...things) {
+    this.npc.Hated.NPCs = this.npc.Hated.NPCs.concat(Array.from(things));
+    return this;
+  };
+
   this.build = function () {
     return this.npc;
   };
@@ -137,20 +173,21 @@ const NpcBuilder = function (npcName) {
 const NpcModels = {
   Vanilla: [
     new NpcBuilder(Npcs.Guide)
-      .likes(
-        Biomes.Forest,
+      .likesBiome(Biomes.Forest)
+      .likesNPCs(
         Npcs.Clothier,
         Npcs.Zoologist,
         Npcs.Princess,
         Npcs.KingSlime,
         Npcs.EyeOfCthulhu
       )
-      .dislikes(Biomes.Ocean, Npcs.Steampunker)
-      .hates(Npcs.Painter, Npcs.WallOfFlesh)
+      .dislikesBiome(Biomes.Ocean)
+      .dislikesNPCs(Npcs.Steampunker)
+      .hatesNPCs(Npcs.Painter, Npcs.WallOfFlesh)
       .build(),
     new NpcBuilder(Npcs.Merchant)
-      .likes(
-        Biomes.Forest,
+      .likesBiome(Biomes.Forest)
+      .likesNPCs(
         Npcs.Golfer,
         Npcs.Nurse,
         Npcs.Princess,
@@ -158,20 +195,21 @@ const NpcModels = {
         Npcs.IceQueen,
         Npcs.QueenBee
       )
-      .dislikes(Biomes.Desert, Npcs.TaxCollector)
-      .hates(Npcs.Angler)
+      .dislikesBiome(Biomes.Desert)
+      .dislikesNPCs(Npcs.TaxCollector)
+      .hatesNPCs(Npcs.Angler)
       .build(),
     new NpcBuilder(Npcs.Nurse)
-      .loves(Npcs.ArmsDealer)
-      .likes(
-        Biomes.Hallow,
+      .lovesNPCs(Npcs.ArmsDealer)
+      .likesBiome(Biomes.Hallow)
+      .likesNPCs(
         Npcs.Wizard,
         Npcs.Princess,
         Npcs.QueenSlime,
         Npcs.EmpressOfLight
       )
-      .dislikes(
-        Biomes.Snow,
+      .dislikesBiome(Biomes.Snow)
+      .dislikesNPCs(
         Npcs.Dryad,
         Npcs.PartyGirl,
         Npcs.Destroyer,
@@ -180,19 +218,19 @@ const NpcModels = {
         Npcs.SkeletronPrime,
         Npcs.MartianSaucer
       )
-      .hates(Npcs.Zoologist)
+      .hatesNPCs(Npcs.Zoologist)
       .build(),
     new NpcBuilder(Npcs.Demolitionist)
-      .loves(Npcs.Tavernkeep)
-      .likes(
-        Biomes.Underground,
+      .lovesNPCs(Npcs.Tavernkeep)
+      .likesBiome(Biomes.Underground)
+      .likesNPCs(
         Npcs.Mechanic,
         Npcs.Princess,
         Npcs.MartianSaucer,
         Npcs.SkeletronPrime
       )
-      .dislikes(
-        Biomes.Ocean,
+      .dislikesBiome(Biomes.Ocean)
+      .dislikesNPCs(
         Npcs.ArmsDealer,
         Npcs.GoblinTinkerer,
         Npcs.EaterOfWorlds,
@@ -200,8 +238,8 @@ const NpcModels = {
       )
       .build(),
     new NpcBuilder(Npcs.DyeTrader)
-      .likes(
-        Biomes.Desert,
+      .likesBiome(Biomes.Desert)
+      .likesNPCs(
         Npcs.ArmsDealer,
         Npcs.Painter,
         Npcs.Princess,
@@ -209,12 +247,13 @@ const NpcModels = {
         Npcs.KingSlime,
         Npcs.Mothron
       )
-      .dislikes(Biomes.Forest, Npcs.Steampunker, Npcs.Dreadnautilus)
-      .hates(Npcs.Pirate)
+      .dislikesBiome(Biomes.Forest)
+      .dislikesNPCs(Npcs.Steampunker, Npcs.Dreadnautilus)
+      .hatesNPCs(Npcs.Pirate)
       .build(),
     new NpcBuilder(Npcs.Angler)
-      .likes(
-        Biomes.Ocean,
+      .likesBiome(Biomes.Ocean)
+      .likesNPCs(
         Npcs.Demolitionist,
         Npcs.PartyGirl,
         Npcs.TaxCollector,
@@ -222,13 +261,14 @@ const NpcModels = {
         Npcs.DukeFishron,
         Npcs.Dreadnautilus
       )
-      .dislikes(Biomes.Desert, Npcs.QueenBee, Npcs.Mothron)
-      .hates(Npcs.Tavernkeep)
+      .dislikesBiome(Biomes.Desert)
+      .dislikesNPCs(Npcs.QueenBee, Npcs.Mothron)
+      .hatesNPCs(Npcs.Tavernkeep)
       .build(),
     new NpcBuilder(Npcs.Zoologist)
-      .loves(Npcs.WitchDoctor)
-      .likes(
-        Biomes.Forest,
+      .lovesNPCs(Npcs.WitchDoctor)
+      .likesBiome(Biomes.Forest)
+      .likesNPCs(
         Npcs.Golfer,
         Npcs.Princess,
         Npcs.DukeFishron,
@@ -236,13 +276,14 @@ const NpcModels = {
         Npcs.Betsy,
         Npcs.Deerclops
       )
-      .dislikes(Biomes.Desert, Npcs.Angler, Npcs.WallOfFlesh)
-      .hates(Npcs.ArmsDealer)
+      .dislikesBiome(Biomes.Desert)
+      .dislikesNPCs(Npcs.Angler, Npcs.WallOfFlesh)
+      .hatesNPCs(Npcs.ArmsDealer)
       .build(),
     new NpcBuilder(Npcs.Dryad)
-      .loves(Npcs.EmpressOfLight, Npcs.Plantera)
-      .likes(
-        Biomes.Jungle,
+      .lovesNPCs(Npcs.EmpressOfLight, Npcs.Plantera)
+      .likesBiome(Biomes.Jungle)
+      .likesNPCs(
         Npcs.WitchDoctor,
         Npcs.Truffle,
         Npcs.Princess,
@@ -250,8 +291,9 @@ const NpcModels = {
         Npcs.QueenBee,
         Npcs.QueenSlime
       )
-      .dislikes(Biomes.Desert, Npcs.Angler, Npcs.Dreadnautilus)
-      .hates(
+      .dislikesBiome(Biomes.Desert)
+      .dislikesNPCs(Npcs.Angler, Npcs.Dreadnautilus)
+      .hatesNPCs(
         Npcs.Golfer,
         Npcs.EaterOfWorlds,
         Npcs.BrainOfCthulhu,
@@ -259,46 +301,44 @@ const NpcModels = {
       )
       .build(),
     new NpcBuilder(Npcs.Painter)
-      .loves(Npcs.Dryad)
-      .likes(
-        Biomes.Jungle,
+      .lovesNPCs(Npcs.Dryad)
+      .likesBiome(Biomes.Jungle)
+      .likesNPCs(
         Npcs.PartyGirl,
         Npcs.Princess,
         Npcs.EmpressOfLight,
         Npcs.EyeOfCthulhu,
         Npcs.IceQueen
       )
-      .dislikes(Biomes.Forest, Npcs.Truffle, Npcs.Cyborg, Npcs.MartianSaucer)
+      .dislikesBiome(Biomes.Forest)
+      .dislikesNPCs(Npcs.Truffle, Npcs.Cyborg, Npcs.MartianSaucer)
       .build(),
     new NpcBuilder(Npcs.Golfer)
-      .loves(Npcs.Angler, Npcs.DukeFishron)
-      .likes(
-        Biomes.Forest,
-        Npcs.Painter,
-        Npcs.Zoologist,
-        Npcs.Princess,
-        Npcs.KingSlime
-      )
-      .dislikes(Biomes.Underground, Npcs.Pirate, Npcs.WallOfFlesh)
-      .hates(Npcs.Merchant)
+      .lovesNPCs(Npcs.Angler, Npcs.DukeFishron)
+      .likesBiome(Biomes.Forest)
+      .likesNPCs(Npcs.Painter, Npcs.Zoologist, Npcs.Princess, Npcs.KingSlime)
+      .dislikesBiome(Biomes.Underground)
+      .dislikesNPCs(Npcs.Pirate, Npcs.WallOfFlesh)
+      .hatesNPCs(Npcs.Merchant)
       .build(),
     new NpcBuilder(Npcs.ArmsDealer)
-      .loves(Npcs.Nurse)
-      .likes(
-        Biomes.Desert,
+      .lovesNPCs(Npcs.Nurse)
+      .likesBiome(Biomes.Desert)
+      .likesNPCs(
         Npcs.Steampunker,
         Npcs.Princess,
         Npcs.EaterOfWorlds,
         Npcs.Pumpking,
         Npcs.BrainOfCthulhu
       )
-      .dislikes(Biomes.Snow, Npcs.Golfer)
-      .hates(Npcs.Demolitionist)
+      .dislikesBiome(Biomes.Snow)
+      .dislikesNPCs(Npcs.Golfer)
+      .hatesNPCs(Npcs.Demolitionist)
       .build(),
     new NpcBuilder(Npcs.Tavernkeep)
-      .loves(Npcs.Demolitionist)
-      .likes(
-        Biomes.Hallow,
+      .lovesNPCs(Npcs.Demolitionist)
+      .likesBiome(Biomes.Hallow)
+      .likesNPCs(
         Npcs.GoblinTinkerer,
         Npcs.Princess,
         Npcs.EaterOfWorlds,
@@ -307,27 +347,23 @@ const NpcModels = {
         Npcs.LunaticCultist,
         Npcs.TorchGod
       )
-      .dislikes(Biomes.Snow, Npcs.Guide, Npcs.Golem)
-      .hates(Npcs.DyeTrader)
+      .dislikesBiome(Biomes.Snow)
+      .dislikesNPCs(Npcs.Guide, Npcs.Golem)
+      .hatesNPCs(Npcs.DyeTrader)
       .build(),
     new NpcBuilder(Npcs.Stylist)
-      .loves(Npcs.DyeTrader, Npcs.EmpressOfLight)
-      .likes(
-        Biomes.Ocean,
-        Npcs.Pirate,
-        Npcs.Princess,
-        Npcs.QueenSlime,
-        Npcs.Plantera
-      )
-      .dislikes(
-        Biomes.Snow,
+      .lovesNPCs(Npcs.DyeTrader, Npcs.EmpressOfLight)
+      .likesBiome(Biomes.Ocean)
+      .likesNPCs(Npcs.Pirate, Npcs.Princess, Npcs.QueenSlime, Npcs.Plantera)
+      .dislikesBiome(Biomes.Snow)
+      .dislikesNPCs(
         Npcs.Tavernkeep,
         Npcs.QueenBee,
         Npcs.WallOfFlesh,
         Npcs.Pumpking,
         Npcs.Mothron
       )
-      .hates(
+      .hatesNPCs(
         Npcs.GoblinTinkerer,
         Npcs.EyeOfCthulhu,
         Npcs.EaterOfWorlds,
@@ -341,14 +377,16 @@ const NpcModels = {
       )
       .build(),
     new NpcBuilder(Npcs.GoblinTinkerer)
-      .loves(Npcs.Mechanic)
-      .likes(Biomes.Underground, Npcs.DyeTrader, Npcs.Princess)
-      .dislikes(Biomes.Jungle, Npcs.Clothier)
-      .hates(Npcs.Stylist)
+      .lovesNPCs(Npcs.Mechanic)
+      .likesBiome(Biomes.Underground)
+      .likesNPCs(Npcs.DyeTrader, Npcs.Princess)
+      .dislikesBiome(Biomes.Jungle)
+      .dislikesNPCs(Npcs.Clothier)
+      .hatesNPCs(Npcs.Stylist)
       .build(),
     new NpcBuilder(Npcs.WitchDoctor)
-      .likes(
-        Biomes.Jungle,
+      .likesBiome(Biomes.Jungle)
+      .likesNPCs(
         Npcs.Dryad,
         Npcs.Guide,
         Npcs.Princess,
@@ -358,13 +396,14 @@ const NpcModels = {
         Npcs.SkeletronPrime,
         Npcs.MartianSaucer
       )
-      .dislikes(Biomes.Hallow, Npcs.Nurse, Npcs.TorchGod)
-      .hates(Npcs.Truffle)
+      .dislikesBiome(Biomes.Hallow)
+      .dislikesNPCs(Npcs.Nurse, Npcs.TorchGod)
+      .hatesNPCs(Npcs.Truffle)
       .build(),
     new NpcBuilder(Npcs.Clothier)
-      .loves(Npcs.Truffle)
-      .likes(
-        Biomes.Underground,
+      .lovesNPCs(Npcs.Truffle)
+      .likesBiome(Biomes.Underground)
+      .likesNPCs(
         Npcs.TaxCollector,
         Npcs.Princess,
         Npcs.EmpressOfLight,
@@ -372,14 +411,16 @@ const NpcModels = {
         Npcs.KingSlime,
         Npcs.QueenSlime
       )
-      .dislikes(Biomes.Hallow, Npcs.Nurse, Npcs.Dreadnautilus)
-      .hates(Npcs.Mechanic)
+      .dislikesBiome(Biomes.Hallow)
+      .dislikesNPCs(Npcs.Nurse, Npcs.Dreadnautilus)
+      .hatesNPCs(Npcs.Mechanic)
       .build(),
     new NpcBuilder(Npcs.Mechanic)
-      .loves(Npcs.GoblinTinkerer)
-      .likes(Biomes.Snow, Npcs.Cyborg, Npcs.Princess, Npcs.MartianSaucer)
-      .dislikes(
-        Biomes.Underground,
+      .lovesNPCs(Npcs.GoblinTinkerer)
+      .likesBiome(Biomes.Snow)
+      .likesNPCs(Npcs.Cyborg, Npcs.Princess, Npcs.MartianSaucer)
+      .dislikesBiome(Biomes.Underground)
+      .dislikesNPCs(
         Npcs.ArmsDealer,
         Npcs.Destroyer,
         Npcs.Retinazer,
@@ -387,12 +428,12 @@ const NpcModels = {
         Npcs.SkeletronPrime,
         Npcs.LunaticCultist
       )
-      .hates(Npcs.Clothier)
+      .hatesNPCs(Npcs.Clothier)
       .build(),
     new NpcBuilder(Npcs.PartyGirl)
-      .loves(Npcs.Wizard, Npcs.Zoologist)
-      .likes(
-        Biomes.Hallow,
+      .lovesNPCs(Npcs.Wizard, Npcs.Zoologist)
+      .likesBiome(Biomes.Hallow)
+      .likesNPCs(
         Npcs.Stylist,
         Npcs.Princess,
         Npcs.EmpressOfLight,
@@ -400,56 +441,57 @@ const NpcModels = {
         Npcs.QueenSlime,
         Npcs.Mothron
       )
-      .dislikes(Biomes.Underground, Npcs.Merchant, Npcs.Dreadnautilus)
-      .hates(Npcs.TaxCollector)
+      .dislikesBiome(Biomes.Underground)
+      .dislikesNPCs(Npcs.Merchant, Npcs.Dreadnautilus)
+      .hatesNPCs(Npcs.TaxCollector)
       .build(),
     new NpcBuilder(Npcs.Wizard)
-      .loves(Npcs.Golfer)
-      .likes(
-        Biomes.Hallow,
+      .lovesNPCs(Npcs.Golfer)
+      .likesBiome(Biomes.Hallow)
+      .likesNPCs(
         Npcs.Merchant,
         Npcs.Princess,
         Npcs.EmpressOfLight,
         Npcs.LunaticCultist,
         Npcs.MoonLord
       )
-      .dislikes(Biomes.Ocean, Npcs.WitchDoctor, Npcs.MartianSaucer)
-      .hates(Npcs.Cyborg)
+      .dislikesBiome(Biomes.Ocean)
+      .dislikesNPCs(Npcs.WitchDoctor, Npcs.MartianSaucer)
+      .hatesNPCs(Npcs.Cyborg)
       .build(),
     new NpcBuilder(Npcs.TaxCollector)
-      .loves(Npcs.Merchant)
-      .likes(Biomes.Snow, Npcs.PartyGirl, Npcs.Princess)
-      .dislikes(
-        Biomes.Hallow,
+      .lovesNPCs(Npcs.Merchant)
+      .likesBiome(Biomes.Snow)
+      .likesNPCs(Npcs.PartyGirl, Npcs.Princess)
+      .dislikesBiome(Biomes.Hallow)
+      .dislikesNPCs(
         Npcs.Demolitionist,
         Npcs.Mechanic,
         Npcs.WallOfFlesh,
         Npcs.MartianSaucer,
         Npcs.Deerclops
       )
-      .hates(Npcs.SantaClaus)
+      .hatesNPCs(Npcs.SantaClaus)
       .build(),
     new NpcBuilder(Npcs.Truffle)
-      .loves(Npcs.Guide, Npcs.Skeletron)
-      .likes(Biomes.Mushroom, Npcs.Dryad, Npcs.Princess, Npcs.Plantera)
-      .dislikes(Npcs.Clothier, Npcs.DukeFishron, Npcs.TorchGod)
-      .hates(Npcs.WitchDoctor)
+      .lovesNPCs(Npcs.Guide, Npcs.Skeletron)
+      .likesBiome(Biomes.Mushroom)
+      .likesNPCs(Npcs.Dryad, Npcs.Princess, Npcs.Plantera)
+      .dislikesNPCs(Npcs.Clothier, Npcs.DukeFishron, Npcs.TorchGod)
+      .hatesNPCs(Npcs.WitchDoctor)
       .build(),
     new NpcBuilder(Npcs.Pirate)
-      .loves(Npcs.Angler)
-      .likes(Biomes.Ocean, Npcs.Tavernkeep, Npcs.Princess, Npcs.DukeFishron)
-      .dislikes(
-        Biomes.Underground,
-        Npcs.Stylist,
-        Npcs.Destroyer,
-        Npcs.Dreadnautilus
-      )
-      .hates(Npcs.Guide)
+      .lovesNPCs(Npcs.Angler)
+      .likesBiome(Biomes.Ocean)
+      .likesNPCs(Npcs.Tavernkeep, Npcs.Princess, Npcs.DukeFishron)
+      .dislikesBiome(Biomes.Underground)
+      .dislikesNPCs(Npcs.Stylist, Npcs.Destroyer, Npcs.Dreadnautilus)
+      .hatesNPCs(Npcs.Guide)
       .build(),
     new NpcBuilder(Npcs.Steampunker)
-      .loves(Npcs.Cyborg)
-      .likes(
-        Biomes.Desert,
+      .lovesNPCs(Npcs.Cyborg)
+      .likesBiome(Biomes.Desert)
+      .likesNPCs(
         Npcs.Painter,
         Npcs.Princess,
         Npcs.Destroyer,
@@ -458,8 +500,8 @@ const NpcModels = {
         Npcs.SkeletronPrime,
         Npcs.MartianSaucer
       )
-      .dislikes(
-        Biomes.Jungle,
+      .dislikesBiome(Biomes.Jungle)
+      .dislikesNPCs(
         Npcs.Dryad,
         Npcs.Wizard,
         Npcs.PartyGirl,
@@ -468,8 +510,8 @@ const NpcModels = {
       )
       .build(),
     new NpcBuilder(Npcs.Cyborg)
-      .likes(
-        Biomes.Snow,
+      .likesBiome(Biomes.Snow)
+      .likesNPCs(
         Npcs.Steampunker,
         Npcs.Pirate,
         Npcs.Stylist,
@@ -480,72 +522,98 @@ const NpcModels = {
         Npcs.SkeletronPrime,
         Npcs.MartianSaucer
       )
-      .dislikes(
-        Biomes.Jungle,
+      .dislikesBiome(Biomes.Jungle)
+      .dislikesNPCs(
         Npcs.Zoologist,
         Npcs.EmpressOfLight,
         Npcs.IceQueen,
         Npcs.Pumpking
       )
-      .hates(Npcs.Wizard)
+      .hatesNPCs(Npcs.Wizard)
       .build(),
     new NpcBuilder(Npcs.SantaClaus)
-      .loves(Biomes.Snow)
-      .likes(Npcs.Princess, Npcs.Deerclops, Npcs.IceQueen)
-      .dislikes(Npcs.Pumpking)
-      .hates(Biomes.Desert, Npcs.TaxCollector, Npcs.MoonLord)
+      .lovesBiome(Biomes.Snow)
+      .likesNPCs(Npcs.Princess, Npcs.Deerclops, Npcs.IceQueen)
+      .dislikesNPCs(Npcs.Pumpking)
+      .hatesBiome(Biomes.Desert)
+      .hatesNPCs(Npcs.TaxCollector, Npcs.MoonLord)
       .build(),
     new NpcBuilder(Npcs.Princess)
-      .loves(...Object.values(Npcs).filter((npc) => npc !== "Princess"))
+      .lovesNPCs(...Object.values(Npcs).filter((npc) => npc !== "Princess"))
       .build(),
   ],
   AlchemistNPC: [
     new NpcBuilder(Npcs.Alchemist)
-      .loves(Biomes.Underground, Npcs.YoungBrewer)
-      .likes(Biomes.Forest, Npcs.Mechanic, Npcs.Princess)
-      .dislikes(Biomes.Snow, Npcs.Brewer)
+      .lovesBiome(Biomes.Underground)
+      .lovesNPCs(Npcs.YoungBrewer)
+      .likesBiome(Biomes.Forest)
+      .likesNPCs(Npcs.Mechanic, Npcs.Princess)
+      .dislikesBiome(Biomes.Snow)
+      .dislikesNPCs(Npcs.Brewer)
       .build(),
     new NpcBuilder(Npcs.Brewer)
-      .loves(Biomes.Forest, Npcs.YoungBrewer)
-      .likes(Biomes.Jungle, Npcs.Alchemist, Npcs.Princess)
-      .dislikes(Biomes.Snow, Npcs.WitchDoctor)
+      .lovesBiome(Biomes.Forest)
+      .lovesNPCs(Npcs.YoungBrewer)
+      .likesBiome(Biomes.Jungle)
+      .likesNPCs(Npcs.Alchemist, Npcs.Princess)
+      .dislikesBiome(Biomes.Snow)
+      .dislikesNPCs(Npcs.WitchDoctor)
       .build(),
     new NpcBuilder(Npcs.Jeweler)
-      .loves(Biomes.Forest, Npcs.Merchant)
-      .likes(Biomes.Jungle, Npcs.TaxCollector, Npcs.Princess)
-      .dislikes(Biomes.Snow, Npcs.PartyGirl)
+      .lovesBiome(Biomes.Forest)
+      .lovesNPCs(Npcs.Merchant)
+      .likesBiome(Biomes.Jungle)
+      .likesNPCs(Npcs.TaxCollector, Npcs.Princess)
+      .dislikesBiome(Biomes.Snow)
+      .dislikesNPCs(Npcs.PartyGirl)
       .build(),
     new NpcBuilder(Npcs.Tinkerer)
-      .loves(Biomes.Snow, Npcs.Steampunker)
-      .likes(Biomes.Underground, Npcs.Mechanic, Npcs.Princess)
-      .dislikes(Biomes.Desert, Npcs.DyeTrader)
+      .lovesBiome(Biomes.Snow)
+      .lovesNPCs(Npcs.Steampunker)
+      .likesBiome(Biomes.Underground)
+      .likesNPCs(Npcs.Mechanic, Npcs.Princess)
+      .dislikesBiome(Biomes.Desert)
+      .dislikesNPCs(Npcs.DyeTrader)
       .build(),
     new NpcBuilder(Npcs.Architect)
-      .loves(Biomes.Jungle, Npcs.Painter)
-      .likes(Biomes.Ocean, Npcs.GoblinTinkerer, Npcs.Princess)
-      .dislikes(Biomes.Snow, Npcs.TaxCollector)
+      .lovesBiome(Biomes.Jungle)
+      .lovesNPCs(Npcs.Painter)
+      .likesBiome(Biomes.Ocean)
+      .likesNPCs(Npcs.GoblinTinkerer, Npcs.Princess)
+      .dislikesBiome(Biomes.Snow)
+      .dislikesNPCs(Npcs.TaxCollector)
       .build(),
     new NpcBuilder(Npcs.Operator)
-      .loves(Biomes.Snow, Npcs.Cyborg)
-      .likes(Biomes.Ocean, Npcs.Steampunker, Npcs.Princess)
-      .dislikes(Biomes.Underground, Npcs.Clothier)
+      .lovesBiome(Biomes.Snow)
+      .lovesNPCs(Npcs.Cyborg)
+      .likesBiome(Biomes.Ocean)
+      .likesNPCs(Npcs.Steampunker, Npcs.Princess)
+      .dislikesBiome(Biomes.Underground)
+      .dislikesNPCs(Npcs.Clothier)
       .build(),
     new NpcBuilder(Npcs.Musician)
-      .loves(Biomes.Hallow, Npcs.PartyGirl)
-      .likes(Biomes.Underground, Npcs.Wizard, Npcs.Princess)
-      .dislikes(Biomes.Snow, Npcs.GoblinTinkerer)
+      .lovesBiome(Biomes.Hallow)
+      .lovesNPCs(Npcs.PartyGirl)
+      .likesBiome(Biomes.Underground)
+      .likesNPCs(Npcs.Wizard, Npcs.Princess)
+      .dislikesBiome(Biomes.Snow)
+      .dislikesNPCs(Npcs.GoblinTinkerer)
       .build(),
     new NpcBuilder(Npcs.YoungBrewer)
-      .loves(Biomes.Forest, Npcs.Brewer)
-      .likes(Biomes.Desert, Npcs.Alchemist, Npcs.Princess)
-      .dislikes(Biomes.Snow, Npcs.GoblinTinkerer)
+      .lovesBiome(Biomes.Forest)
+      .lovesNPCs(Npcs.Brewer)
+      .likesBiome(Biomes.Desert)
+      .likesNPCs(Npcs.Alchemist, Npcs.Princess)
+      .dislikesBiome(Biomes.Snow)
+      .dislikesNPCs(Npcs.GoblinTinkerer)
       .build(),
   ],
-    "Bosses as NPCs": [
+  "Bosses as NPCs": [
     new NpcBuilder(Npcs.KingSlime)
-      .loves(Biomes.Forest, Npcs.QueenSlime, Npcs.EyeOfCthulhu)
-      .likes(
-        Biomes.Hallow,
+      .lovesBiome(Biomes.Forest)
+      .lovesNPCs(Npcs.QueenSlime, Npcs.EyeOfCthulhu)
+      .likesBiome(Biomes.Hallow)
+      .likesNPCs(
         Npcs.Pumpking,
         Npcs.DukeFishron,
         Npcs.Guide,
@@ -553,12 +621,12 @@ const NpcModels = {
         Npcs.Golfer,
         Npcs.Princess
       )
-      .dislikes(Biomes.Snow)
+      .dislikesBiome(Biomes.Snow)
       .build(),
     new NpcBuilder(Npcs.TorchGod)
-      .loves(Biomes.Underground)
-      .likes(
-        Biomes.Forest,
+      .lovesBiome(Biomes.Underground)
+      .likesBiome(Biomes.Forest)
+      .likesNPCs(
         Npcs.MoonLord,
         Npcs.Golem,
         Npcs.Pumpking,
@@ -569,12 +637,13 @@ const NpcModels = {
         Npcs.Steampunker,
         Npcs.Princess
       )
-      .dislikes(Npcs.Dreadnautilus, Npcs.IceQueen, Npcs.Pirate)
+      .dislikesNPCs(Npcs.Dreadnautilus, Npcs.IceQueen, Npcs.Pirate)
       .build(),
     new NpcBuilder(Npcs.EyeOfCthulhu)
-      .loves(Biomes.Forest, Npcs.Retinazer, Npcs.Spazmatism)
-      .likes(
-        Biomes.Desert,
+      .lovesBiome(Biomes.Forest)
+      .lovesNPCs(Npcs.Retinazer, Npcs.Spazmatism)
+      .likesBiome(Biomes.Desert)
+      .likesNPCs(
         Npcs.BrainOfCthulhu,
         Npcs.Skeletron,
         Npcs.MoonLord,
@@ -585,22 +654,25 @@ const NpcModels = {
       )
       .build(),
     new NpcBuilder(Npcs.EaterOfWorlds)
-      .loves(Biomes.Graveyard, Npcs.BrainOfCthulhu)
-      .likes(
-        Biomes.Forest,
+      .lovesBiome(Biomes.Graveyard)
+      .lovesNPCs(Npcs.BrainOfCthulhu)
+      .likesBiome(Biomes.Forest)
+      .likesNPCs(
         Npcs.WallOfFlesh,
         Npcs.Destroyer,
         Npcs.Tavernkeep,
         Npcs.ArmsDealer,
         Npcs.Princess
       )
-      .dislikes(Biomes.Jungle, Npcs.Dryad, Npcs.EmpressOfLight)
-      .hates(Biomes.Hallow)
+      .dislikesBiome(Biomes.Jungle)
+      .dislikesNPCs(Npcs.Dryad, Npcs.EmpressOfLight)
+      .hatesBiome(Biomes.Hallow)
       .build(),
     new NpcBuilder(Npcs.BrainOfCthulhu)
-      .loves(Biomes.Graveyard, Npcs.EaterOfWorlds)
-      .likes(
-        Biomes.Forest,
+      .lovesBiome(Biomes.Graveyard)
+      .lovesNPCs(Npcs.EaterOfWorlds)
+      .likesBiome(Biomes.Forest)
+      .likesNPCs(
         Npcs.WallOfFlesh,
         Npcs.EyeOfCthulhu,
         Npcs.MoonLord,
@@ -609,13 +681,15 @@ const NpcModels = {
         Npcs.ArmsDealer,
         Npcs.Princess
       )
-      .dislikes(Biomes.Jungle, Npcs.Dryad, Npcs.EmpressOfLight)
-      .hates(Biomes.Hallow)
+      .dislikesBiome(Biomes.Jungle)
+      .dislikesNPCs(Npcs.Dryad, Npcs.EmpressOfLight)
+      .hatesBiome(Biomes.Hallow)
       .build(),
     new NpcBuilder(Npcs.QueenBee)
-      .loves(Biomes.Jungle, Npcs.Dryad)
-      .likes(
-        Biomes.Underground,
+      .lovesBiome(Biomes.Jungle)
+      .lovesNPCs(Npcs.Dryad)
+      .likesBiome(Biomes.Underground)
+      .likesNPCs(
         Npcs.Plantera,
         Npcs.Golem,
         Npcs.QueenSlime,
@@ -625,13 +699,15 @@ const NpcModels = {
         Npcs.Zoologist,
         Npcs.Princess
       )
-      .dislikes(Biomes.Graveyard, Npcs.Demolitionist)
-      .hates(Biomes.Snow)
+      .dislikesBiome(Biomes.Graveyard)
+      .dislikesNPCs(Npcs.Demolitionist)
+      .hatesBiome(Biomes.Snow)
       .build(),
     new NpcBuilder(Npcs.Skeletron)
-      .loves(Biomes.Graveyard, Npcs.Clothier)
-      .likes(
-        Biomes.Forest,
+      .lovesBiome(Biomes.Graveyard)
+      .lovesNPCs(Npcs.Clothier)
+      .likesBiome(Biomes.Forest)
+      .likesNPCs(
         Npcs.LunaticCultist,
         Npcs.SkeletronPrime,
         Npcs.EyeOfCthulhu,
@@ -640,12 +716,13 @@ const NpcModels = {
         Npcs.Merchant,
         Npcs.Princess
       )
-      .dislikes(Npcs.Angler)
+      .dislikesNPCs(Npcs.Angler)
       .build(),
     new NpcBuilder(Npcs.Deerclops)
-      .loves(Biomes.Snow, Npcs.Betsy)
-      .likes(
-        Biomes.Forest,
+      .lovesBiome(Biomes.Snow)
+      .lovesNPCs(Npcs.Betsy)
+      .likesBiome(Biomes.Forest)
+      .likesNPCs(
         Npcs.IceQueen,
         Npcs.EyeOfCthulhu,
         Npcs.Mothron,
@@ -653,12 +730,12 @@ const NpcModels = {
         Npcs.SantaClaus,
         Npcs.Princess
       )
-      .dislikes(Npcs.TaxCollector)
+      .dislikesNPCs(Npcs.TaxCollector)
       .build(),
     new NpcBuilder(Npcs.WallOfFlesh)
-      .loves(Npcs.Guide)
-      .likes(
-        Biomes.Underground,
+      .lovesNPCs(Npcs.Guide)
+      .likesBiome(Biomes.Underground)
+      .likesNPCs(
         Npcs.EaterOfWorlds,
         Npcs.BrainOfCthulhu,
         Npcs.Dreadnautilus,
@@ -666,12 +743,14 @@ const NpcModels = {
         Npcs.GoblinTinkerer,
         Npcs.Princess
       )
-      .dislikes(Biomes.Forest, Npcs.QueenBee)
+      .dislikesBiome(Biomes.Forest)
+      .dislikesNPCs(Npcs.QueenBee)
       .build(),
     new NpcBuilder(Npcs.QueenSlime)
-      .loves(Biomes.Hallow, Npcs.KingSlime, Npcs.EmpressOfLight)
-      .likes(
-        Biomes.Forest,
+      .lovesBiome(Biomes.Hallow)
+      .lovesNPCs(Npcs.KingSlime, Npcs.EmpressOfLight)
+      .likesBiome(Biomes.Forest)
+      .likesNPCs(
         Npcs.QueenBee,
         Npcs.IceQueen,
         Npcs.PartyGirl,
@@ -679,17 +758,17 @@ const NpcModels = {
         Npcs.Dryad,
         Npcs.Princess
       )
-      .dislikes(Biomes.Snow)
+      .dislikesBiome(Biomes.Snow)
       .build(),
     new NpcBuilder(Npcs.Destroyer)
-      .loves(
+      .lovesNPCs(
         Npcs.Retinazer,
         Npcs.Spazmatism,
         Npcs.SkeletronPrime,
         Npcs.Mechanic
       )
-      .likes(
-        Biomes.Forest,
+      .likesBiome(Biomes.Forest)
+      .likesNPCs(
         Npcs.EaterOfWorlds,
         Npcs.MoonLord,
         Npcs.Steampunker,
@@ -697,17 +776,17 @@ const NpcModels = {
         Npcs.GoblinTinkerer,
         Npcs.Princess
       )
-      .dislikes(Npcs.Wizard)
+      .dislikesNPCs(Npcs.Wizard)
       .build(),
     new NpcBuilder(Npcs.Retinazer)
-      .loves(
+      .lovesNPCs(
         Npcs.Destroyer,
         Npcs.Spazmatism,
         Npcs.SkeletronPrime,
         Npcs.Mechanic
       )
-      .likes(
-        Biomes.Forest,
+      .likesBiome(Biomes.Forest)
+      .likesNPCs(
         Npcs.EyeOfCthulhu,
         Npcs.MoonLord,
         Npcs.Steampunker,
@@ -715,12 +794,17 @@ const NpcModels = {
         Npcs.GoblinTinkerer,
         Npcs.Princess
       )
-      .dislikes(Npcs.Nurse)
+      .dislikesNPCs(Npcs.Nurse)
       .build(),
     new NpcBuilder(Npcs.Spazmatism)
-      .loves(Npcs.Destroyer, Npcs.Retinazer, Npcs.SkeletronPrime, Npcs.Mechanic)
-      .likes(
-        Biomes.Forest,
+      .lovesNPCs(
+        Npcs.Destroyer,
+        Npcs.Retinazer,
+        Npcs.SkeletronPrime,
+        Npcs.Mechanic
+      )
+      .likesBiome(Biomes.Forest)
+      .likesNPCs(
         Npcs.EyeOfCthulhu,
         Npcs.MoonLord,
         Npcs.TorchGod,
@@ -729,12 +813,12 @@ const NpcModels = {
         Npcs.GoblinTinkerer,
         Npcs.Princess
       )
-      .dislikes(Npcs.Nurse)
+      .dislikesNPCs(Npcs.Nurse)
       .build(),
     new NpcBuilder(Npcs.SkeletronPrime)
-      .loves(Npcs.Destroyer, Npcs.Retinazer, Npcs.Spazmatism, Npcs.Mechanic)
-      .likes(
-        Biomes.Forest,
+      .lovesNPCs(Npcs.Destroyer, Npcs.Retinazer, Npcs.Spazmatism, Npcs.Mechanic)
+      .likesBiome(Biomes.Forest)
+      .likesNPCs(
         Npcs.Skeletron,
         Npcs.MoonLord,
         Npcs.Steampunker,
@@ -742,12 +826,13 @@ const NpcModels = {
         Npcs.GoblinTinkerer,
         Npcs.Princess
       )
-      .dislikes(Npcs.Pirate)
+      .dislikesNPCs(Npcs.Pirate)
       .build(),
     new NpcBuilder(Npcs.Dreadnautilus)
-      .loves(Biomes.Ocean, Npcs.BrainOfCthulhu)
-      .likes(
-        Biomes.Graveyard,
+      .lovesBiome(Biomes.Ocean)
+      .lovesNPCs(Npcs.BrainOfCthulhu)
+      .likesBiome(Biomes.Graveyard)
+      .likesNPCs(
         Npcs.DukeFishron,
         Npcs.WallOfFlesh,
         Npcs.Mothron,
@@ -755,13 +840,15 @@ const NpcModels = {
         Npcs.Tavernkeep,
         Npcs.Princess
       )
-      .dislikes(Biomes.Underground, Npcs.Angler, Npcs.Pirate)
-      .hates(Biomes.Snow)
+      .dislikesBiome(Biomes.Underground)
+      .dislikesNPCs(Npcs.Angler, Npcs.Pirate)
+      .hatesBiome(Biomes.Snow)
       .build(),
     new NpcBuilder(Npcs.Mothron)
-      .loves(Biomes.Graveyard, Npcs.Deerclops, Npcs.WitchDoctor)
-      .likes(
-        Biomes.Forest,
+      .lovesBiome(Biomes.Graveyard)
+      .lovesNPCs(Npcs.Deerclops, Npcs.WitchDoctor)
+      .likesBiome(Biomes.Forest)
+      .likesNPCs(
         Npcs.QueenBee,
         Npcs.Betsy,
         Npcs.Dreadnautilus,
@@ -770,12 +857,14 @@ const NpcModels = {
         Npcs.Merchant,
         Npcs.Princess
       )
-      .dislikes(Biomes.Underground, Npcs.DyeTrader, Npcs.Golfer)
+      .dislikesBiome(Biomes.Underground)
+      .dislikesNPCs(Npcs.DyeTrader, Npcs.Golfer)
       .build(),
     new NpcBuilder(Npcs.Plantera)
-      .loves(Biomes.Jungle, Npcs.WitchDoctor, Npcs.Dryad)
-      .likes(
-        Biomes.Underground,
+      .lovesBiome(Biomes.Jungle)
+      .lovesNPCs(Npcs.WitchDoctor, Npcs.Dryad)
+      .likesBiome(Biomes.Underground)
+      .likesNPCs(
         Npcs.Golem,
         Npcs.QueenBee,
         Npcs.EmpressOfLight,
@@ -783,13 +872,15 @@ const NpcModels = {
         Npcs.Steampunker,
         Npcs.Princess
       )
-      .dislikes(Biomes.Graveyard, Npcs.DyeTrader)
-      .hates(Biomes.Snow)
+      .dislikesBiome(Biomes.Graveyard)
+      .dislikesNPCs(Npcs.DyeTrader)
+      .hatesBiome(Biomes.Snow)
       .build(),
     new NpcBuilder(Npcs.Golem)
-      .loves(Biomes.Jungle, Npcs.WitchDoctor)
-      .likes(
-        Biomes.Underground,
+      .lovesBiome(Biomes.Jungle)
+      .lovesNPCs(Npcs.WitchDoctor)
+      .likesBiome(Biomes.Underground)
+      .likesNPCs(
         Npcs.Plantera,
         Npcs.QueenBee,
         Npcs.EmpressOfLight,
@@ -797,12 +888,14 @@ const NpcModels = {
         Npcs.Dryad,
         Npcs.Princess
       )
-      .dislikes(Biomes.Graveyard, Npcs.GoblinTinkerer, Npcs.Demolitionist)
+      .dislikesBiome(Biomes.Graveyard)
+      .dislikesNPCs(Npcs.GoblinTinkerer, Npcs.Demolitionist)
       .build(),
     new NpcBuilder(Npcs.Pumpking)
-      .loves(Biomes.Graveyard, Npcs.IceQueen)
-      .likes(
-        Biomes.Desert,
+      .lovesBiome(Biomes.Graveyard)
+      .lovesNPCs(Npcs.IceQueen)
+      .likesBiome(Biomes.Desert)
+      .likesNPCs(
         Npcs.Betsy,
         Npcs.MartianSaucer,
         Npcs.KingSlime,
@@ -811,12 +904,14 @@ const NpcModels = {
         Npcs.TorchGod,
         Npcs.Princess
       )
-      .dislikes(Biomes.Snow, Npcs.PartyGirl)
+      .dislikesBiome(Biomes.Snow)
+      .dislikesNPCs(Npcs.PartyGirl)
       .build(),
     new NpcBuilder(Npcs.IceQueen)
-      .loves(Biomes.Snow, Npcs.Pumpking)
-      .likes(
-        Biomes.Ocean,
+      .lovesBiome(Biomes.Snow)
+      .lovesNPCs(Npcs.Pumpking)
+      .likesBiome(Biomes.Ocean)
+      .likesNPCs(
         Npcs.Betsy,
         Npcs.MartianSaucer,
         Npcs.Deerclops,
@@ -825,12 +920,13 @@ const NpcModels = {
         Npcs.SantaClaus,
         Npcs.Princess
       )
-      .dislikes(Biomes.Graveyard, Npcs.Mothron, Npcs.TorchGod, Npcs.Painter)
+      .dislikesBiome(Biomes.Graveyard)
+      .dislikesNPCs(Npcs.Mothron, Npcs.TorchGod, Npcs.Painter)
       .build(),
     new NpcBuilder(Npcs.MartianSaucer)
-      .loves(Npcs.Cyborg, Npcs.Steampunker)
-      .likes(
-        Biomes.Desert,
+      .lovesNPCs(Npcs.Cyborg, Npcs.Steampunker)
+      .likesBiome(Biomes.Desert)
+      .likesNPCs(
         Npcs.IceQueen,
         Npcs.Pumpking,
         Npcs.Betsy,
@@ -838,12 +934,13 @@ const NpcModels = {
         Npcs.GoblinTinkerer,
         Npcs.Princess
       )
-      .dislikes(Npcs.Wizard, Npcs.TaxCollector)
+      .dislikesNPCs(Npcs.Wizard, Npcs.TaxCollector)
       .build(),
     new NpcBuilder(Npcs.EmpressOfLight)
-      .loves(Biomes.Hallow, Npcs.Dryad, Npcs.QueenSlime)
-      .likes(
-        Biomes.Forest,
+      .lovesBiome(Biomes.Hallow)
+      .lovesNPCs(Npcs.Dryad, Npcs.QueenSlime)
+      .likesBiome(Biomes.Forest)
+      .likesNPCs(
         Npcs.Plantera,
         Npcs.Golem,
         Npcs.LunaticCultist,
@@ -852,13 +949,15 @@ const NpcModels = {
         Npcs.Stylist,
         Npcs.Princess
       )
-      .dislikes(Biomes.Underground, Npcs.EaterOfWorlds, Npcs.BrainOfCthulhu)
-      .hates(Biomes.Graveyard)
+      .dislikesBiome(Biomes.Underground)
+      .dislikesNPCs(Npcs.EaterOfWorlds, Npcs.BrainOfCthulhu)
+      .hatesBiome(Biomes.Graveyard)
       .build(),
     new NpcBuilder(Npcs.DukeFishron)
-      .loves(Biomes.Ocean, Npcs.Betsy, Npcs.Angler)
-      .likes(
-        Biomes.Snow,
+      .lovesBiome(Biomes.Ocean)
+      .lovesNPCs(Npcs.Betsy, Npcs.Angler)
+      .likesBiome(Biomes.Snow)
+      .likesNPCs(
         Npcs.EmpressOfLight,
         Npcs.KingSlime,
         Npcs.Pumpking,
@@ -867,12 +966,13 @@ const NpcModels = {
         Npcs.Truffle,
         Npcs.Princess
       )
-      .dislikes(Npcs.ArmsDealer)
+      .dislikesNPCs(Npcs.ArmsDealer)
       .build(),
     new NpcBuilder(Npcs.Betsy)
-      .loves(Biomes.Forest, Npcs.DukeFishron, Npcs.Deerclops)
-      .likes(
-        Biomes.Hallow,
+      .lovesBiome(Biomes.Forest)
+      .lovesNPCs(Npcs.DukeFishron, Npcs.Deerclops)
+      .likesBiome(Biomes.Hallow)
+      .likesNPCs(
         Npcs.IceQueen,
         Npcs.Pumpking,
         Npcs.MartianSaucer,
@@ -881,12 +981,14 @@ const NpcModels = {
         Npcs.Zoologist,
         Npcs.Princess
       )
-      .dislikes(Biomes.Underground, Npcs.Merchant)
+      .dislikesBiome(Biomes.Underground)
+      .dislikesNPCs(Npcs.Merchant)
       .build(),
     new NpcBuilder(Npcs.LunaticCultist)
-      .loves(Biomes.Graveyard, Npcs.MoonLord)
-      .likes(
-        Biomes.Ocean,
+      .lovesBiome(Biomes.Graveyard)
+      .lovesNPCs(Npcs.MoonLord)
+      .likesBiome(Biomes.Ocean)
+      .likesNPCs(
         Npcs.Skeletron,
         Npcs.Plantera,
         Npcs.Golem,
@@ -894,11 +996,12 @@ const NpcModels = {
         Npcs.Clothier,
         Npcs.Princess
       )
-      .dislikes(Npcs.WitchDoctor, Npcs.Dreadnautilus)
+      .dislikesNPCs(Npcs.WitchDoctor, Npcs.Dreadnautilus)
       .build(),
     new NpcBuilder(Npcs.MoonLord)
-      .loves(Biomes.Graveyard, Npcs.LunaticCultist)
-      .likes(
+      .lovesBiome(Biomes.Graveyard)
+      .lovesNPCs(Npcs.LunaticCultist)
+      .likesNPCs(
         Npcs.EyeOfCthulhu,
         Npcs.BrainOfCthulhu,
         Npcs.Skeletron,
@@ -909,133 +1012,172 @@ const NpcModels = {
         Npcs.Mechanic,
         Npcs.Princess
       )
-      .dislikes(Npcs.EmpressOfLight, Npcs.Dryad)
-      .hates(Npcs.TorchGod)
+      .dislikesNPCs(Npcs.EmpressOfLight, Npcs.Dryad)
+      .hatesNPCs(Npcs.TorchGod)
       .build(),
   ],
   "Calamity Mod": [
     new NpcBuilder(Npcs.SeaKing)
-      .likes(Biomes.Ocean, Npcs.Pirate, Npcs.Princess)
-      .dislikes(Biomes.Desert, Npcs.Demolitionist)
-      .hates(Npcs.Angler)
+      .likesBiome(Biomes.Ocean)
+      .likesNPCs(Npcs.Pirate, Npcs.Princess)
+      .dislikesBiome(Biomes.Desert)
+      .dislikesNPCs(Npcs.Demolitionist)
+      .hatesNPCs(Npcs.Angler)
       .build(),
     new NpcBuilder(Npcs.Bandit)
-      .likes(Biomes.Desert, Npcs.GoblinTinkerer, Npcs.Princess)
-      .dislikes(Biomes.Jungle, Npcs.Dryad)
+      .likesBiome(Biomes.Desert)
+      .likesNPCs(Npcs.GoblinTinkerer, Npcs.Princess)
+      .dislikesBiome(Biomes.Jungle)
+      .dislikesNPCs(Npcs.Dryad)
       .build(),
     new NpcBuilder(Npcs.DrunkPrincess)
-      .loves(Biomes.Hallow, Npcs.Stylist, Npcs.Zoologist)
-      .likes(Biomes.Ocean, Npcs.PartyGirl, Npcs.Truffle, Npcs.Princess)
-      .dislikes(Biomes.Desert, Npcs.Tavernkeep, Npcs.TaxCollector)
-      .hates(Biomes.Underground, Npcs.Angler, Npcs.GoblinTinkerer)
+      .lovesBiome(Biomes.Hallow)
+      .lovesNPCs(Npcs.Stylist, Npcs.Zoologist)
+      .likesBiome(Biomes.Ocean)
+      .likesNPCs(Npcs.PartyGirl, Npcs.Truffle, Npcs.Princess)
+      .dislikesBiome(Biomes.Desert)
+      .dislikesNPCs(Npcs.Tavernkeep, Npcs.TaxCollector)
+      .hatesBiome(Biomes.Underground)
+      .hatesNPCs(Npcs.Angler, Npcs.GoblinTinkerer)
       .build(),
     new NpcBuilder(Npcs.Archmage)
-      .likes(Biomes.Snow, Npcs.Wizard, Npcs.Princess)
-      .dislikes(Biomes.Desert, Npcs.Cyborg)
+      .likesBiome(Biomes.Snow)
+      .likesNPCs(Npcs.Wizard, Npcs.Princess)
+      .dislikesBiome(Biomes.Desert)
+      .dislikesNPCs(Npcs.Cyborg)
       .build(),
     new NpcBuilder(Npcs.BrimstoneWitch)
-      .likes(Biomes.Forest, Npcs.Clothier, Npcs.Princess)
-      .dislikes(Biomes.Crag, Npcs.PartyGirl)
+      .likesBiome(Biomes.Forest)
+      .likesNPCs(Npcs.Clothier, Npcs.Princess)
+      .dislikesBiome(Biomes.Crag)
+      .dislikesNPCs(Npcs.PartyGirl)
       .build(),
   ],
   "Fargo's Mod": [
     new NpcBuilder(Npcs.LumberJack)
-      .loves(Biomes.Forest)
-      .likes(Npcs.Squirrel, Npcs.Princess)
-      .dislikes(Npcs.Dryad)
-      .hates(Npcs.Demolitionist)
+      .lovesBiome(Biomes.Forest)
+      .likesNPCs(Npcs.Squirrel, Npcs.Princess)
+      .dislikesNPCs(Npcs.Dryad)
+      .hatesNPCs(Npcs.Demolitionist)
       .build(),
     new NpcBuilder(Npcs.Deviantt)
-      .loves(Biomes.Space, Npcs.Mutant)
-      .likes(Biomes.Jungle, Npcs.Abominationn, Npcs.Princess)
-      .dislikes(Biomes.Snow, Npcs.Zoologist)
-      .hates(Biomes.Desert, Npcs.Angler)
+      .lovesBiome(Biomes.Space)
+      .lovesNPCs(Npcs.Mutant)
+      .likesBiome(Biomes.Jungle)
+      .likesNPCs(Npcs.Abominationn, Npcs.Princess)
+      .dislikesBiome(Biomes.Snow)
+      .dislikesNPCs(Npcs.Zoologist)
+      .hatesBiome(Biomes.Desert)
+      .hatesNPCs(Npcs.Angler)
       .build(),
     new NpcBuilder(Npcs.Abominationn)
-      .loves(Biomes.Space, Npcs.Mutant)
-      .likes(Biomes.Ocean, Npcs.Deviantt, Npcs.Princess)
-      .dislikes(Biomes.Dungeon)
-      .hates(Npcs.Nurse)
+      .lovesBiome(Biomes.Space)
+      .lovesNPCs(Npcs.Mutant)
+      .likesBiome(Biomes.Ocean)
+      .likesNPCs(Npcs.Deviantt, Npcs.Princess)
+      .dislikesBiome(Biomes.Dungeon)
+      .hatesNPCs(Npcs.Nurse)
       .build(),
     new NpcBuilder(Npcs.Mutant)
-      .loves(Biomes.Space, Npcs.Abominationn)
-      .likes(Biomes.Forest, Npcs.Deviantt, Npcs.Princess)
-      .dislikes(Biomes.Hallow, Npcs.LumberJack)
+      .lovesBiome(Biomes.Space)
+      .lovesNPCs(Npcs.Abominationn)
+      .likesBiome(Biomes.Forest)
+      .likesNPCs(Npcs.Deviantt, Npcs.Princess)
+      .dislikesBiome(Biomes.Hallow)
+      .dislikesNPCs(Npcs.LumberJack)
       .build(),
     new NpcBuilder(Npcs.Squirrel)
-      .loves(Biomes.Forest)
-      .likes(Npcs.LumberJack, Npcs.Princess)
-      .hates(Biomes.Underground)
+      .lovesBiome(Biomes.Forest)
+      .likesNPCs(Npcs.LumberJack, Npcs.Princess)
+      .hatesBiome(Biomes.Underground)
       .build(),
   ],
   "Thorium Mod": [
     new NpcBuilder(Npcs.Cobbler)
-      .loves(Npcs.Zoologist, Npcs.Golfer)
-      .likes(Biomes.Forest, Npcs.Spiritualist, Npcs.Princess)
-      .dislikes(Biomes.Ocean, Npcs.Druid, Npcs.Dryad, Npcs.Angler)
-      .hates(Npcs.Nurse)
+      .lovesNPCs(Npcs.Zoologist, Npcs.Golfer)
+      .likesBiome(Biomes.Forest)
+      .likesNPCs(Npcs.Spiritualist, Npcs.Princess)
+      .dislikesBiome(Biomes.Ocean)
+      .dislikesNPCs(Npcs.Druid, Npcs.Dryad, Npcs.Angler)
+      .hatesNPCs(Npcs.Nurse)
       .build(),
     new NpcBuilder(Npcs.DesertAcolyte)
-      .likes(Biomes.Desert, Npcs.Nurse, Npcs.Spiritualist, Npcs.Princess)
-      .dislikes(Biomes.Jungle, Npcs.Pirate)
-      .hates(Npcs.GoblinTinkerer, Npcs.WitchDoctor, Npcs.WeaponMaster)
+      .likesBiome(Biomes.Desert)
+      .likesNPCs(Npcs.Nurse, Npcs.Spiritualist, Npcs.Princess)
+      .dislikesBiome(Biomes.Jungle)
+      .dislikesNPCs(Npcs.Pirate)
+      .hatesNPCs(Npcs.GoblinTinkerer, Npcs.WitchDoctor, Npcs.WeaponMaster)
       .build(),
     new NpcBuilder(Npcs.Cook)
-      .loves(Npcs.SantaClaus)
-      .likes(Biomes.Mushroom, Npcs.Truffle, Npcs.Princess)
-      .dislikes(Biomes.Underground, Npcs.Angler)
-      .hates(Npcs.Cyborg)
+      .lovesNPCs(Npcs.SantaClaus)
+      .likesBiome(Biomes.Mushroom)
+      .likesNPCs(Npcs.Truffle, Npcs.Princess)
+      .dislikesBiome(Biomes.Underground)
+      .dislikesNPCs(Npcs.Angler)
+      .hatesNPCs(Npcs.Cyborg)
       .build(),
     new NpcBuilder(Npcs.ConfusedZombie)
-      .loves(Npcs.Guide)
-      .likes(Biomes.Forest, Npcs.Clothier, Npcs.Princess)
-      .dislikes(Biomes.Snow, Npcs.Princess)
+      .lovesNPCs(Npcs.Guide)
+      .likesBiome(Biomes.Forest)
+      .likesNPCs(Npcs.Clothier, Npcs.Princess)
+      .dislikesBiome(Biomes.Snow)
+      .dislikesNPCs(Npcs.Spiritualist)
       .build(),
     new NpcBuilder(Npcs.Blacksmith)
-      .loves(Npcs.Demolitionist)
-      .likes(Biomes.Underground, Npcs.WeaponMaster, Npcs.Princess)
-      .dislikes(Npcs.Tracker)
+      .lovesNPCs(Npcs.Demolitionist)
+      .likesBiome(Biomes.Underground)
+      .likesNPCs(Npcs.WeaponMaster, Npcs.Princess)
+      .dislikesNPCs(Npcs.Tracker)
       .build(),
     new NpcBuilder(Npcs.Tracker)
-      .loves(Npcs.Tavernkeep)
-      .likes(Biomes.Snow, Npcs.Guide, Npcs.Stylist, Npcs.Princess)
-      .dislikes(Biomes.Forest, Npcs.DyeTrader)
-      .hates(Npcs.DesertAcolyte)
+      .lovesNPCs(Npcs.Tavernkeep)
+      .likesBiome(Biomes.Snow)
+      .likesNPCs(Npcs.Guide, Npcs.Stylist, Npcs.Princess)
+      .dislikesBiome(Biomes.Forest)
+      .dislikesNPCs(Npcs.DyeTrader)
+      .hatesNPCs(Npcs.DesertAcolyte)
       .build(),
     new NpcBuilder(Npcs.Diverman)
-      .loves(Npcs.PartyGirl)
-      .likes(Biomes.Ocean, Npcs.Pirate, Npcs.Princess)
-      .dislikes(Biomes.Desert, Npcs.Angler)
+      .lovesNPCs(Npcs.PartyGirl)
+      .likesBiome(Biomes.Ocean)
+      .likesNPCs(Npcs.Pirate, Npcs.Princess)
+      .dislikesBiome(Biomes.Desert)
+      .dislikesNPCs(Npcs.Angler)
       .build(),
     new NpcBuilder(Npcs.Druid)
-      .likes(Biomes.Jungle, Npcs.Dryad, Npcs.Princess)
-      .dislikes(Biomes.Snow, Npcs.Demolitionist)
-      .hates(Npcs.Steampunker)
+      .likesBiome(Biomes.Jungle)
+      .likesNPCs(Npcs.Dryad, Npcs.Princess)
+      .dislikesBiome(Biomes.Snow)
+      .dislikesNPCs(Npcs.Demolitionist)
+      .hatesNPCs(Npcs.Steampunker)
       .build(),
     new NpcBuilder(Npcs.Spiritualist)
-      .loves(Npcs.Stylist)
-      .likes(Biomes.Hallow, Npcs.WitchDoctor, Npcs.Princess)
-      .dislikes(Biomes.Underground, Npcs.WeaponMaster)
-      .hates(Npcs.TaxCollector)
+      .lovesNPCs(Npcs.Stylist)
+      .likesBiome(Biomes.Hallow)
+      .likesNPCs(Npcs.WitchDoctor, Npcs.Princess)
+      .dislikesBiome(Biomes.Underground)
+      .dislikesNPCs(Npcs.WeaponMaster)
+      .hatesNPCs(Npcs.TaxCollector)
       .build(),
     new NpcBuilder(Npcs.WeaponMaster)
-      .loves(Npcs.TaxCollector)
-      .likes(
-        Biomes.Underground,
-        Npcs.GoblinTinkerer,
-        Npcs.WitchDoctor,
-        Npcs.Princess
-      )
-      .dislikes(Biomes.Hallow, Npcs.ConfusedZombie, Npcs.Guide)
-      .hates(Npcs.Spiritualist)
+      .lovesNPCs(Npcs.TaxCollector)
+      .likesBiome(Biomes.Underground)
+      .likesNPCs(Npcs.GoblinTinkerer, Npcs.WitchDoctor, Npcs.Princess)
+      .dislikesBiome(Biomes.Hallow)
+      .dislikesNPCs(Npcs.ConfusedZombie, Npcs.Guide)
+      .hatesNPCs(Npcs.Spiritualist)
       .build(),
   ],
   "One-Offs": [
     new NpcBuilder(Npcs.Automaton)
-      .loves(Biomes.Snow, Npcs.Mechanic)
-      .likes(Biomes.Forest, Npcs.WitchDoctor, Npcs.Princess)
-      .dislikes(Biomes.Desert, Npcs.Wizard)
-      .hates(Biomes.Hallow, Npcs.TaxCollector)
+      .lovesBiome(Biomes.Snow)
+      .lovesNPCs(Npcs.Mechanic)
+      .likesBiome(Biomes.Forest)
+      .likesNPCs(Npcs.WitchDoctor, Npcs.Princess)
+      .dislikesBiome(Biomes.Desert)
+      .dislikesNPCs(Npcs.Wizard)
+      .hatesBiome(Biomes.Hallow)
+      .hatesNPCs(Npcs.TaxCollector)
       .build(),
   ],
 };

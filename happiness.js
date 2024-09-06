@@ -11,16 +11,14 @@ function getHappiness(npc, npcs, biomes) {
       value *= 0.95;
     }
 
-    let biomeMultipliers = biomes.map((biome) =>
-      getHappinessMultiplier(npc, biome)
-    );
+    let biomeMultipliers = biomes.map((biome) => getBiomeModifier(npc, biome));
     if (biomeMultipliers.some((it) => it != 1)) {
       value *= Math.min(...biomeMultipliers.filter((it) => it != 1));
     }
 
     npcs
       .map((n) => n.Name)
-      .map((other) => getHappinessMultiplier(npc, other))
+      .map((other) => getHappinessModifier(npc, other))
       .forEach((mult) => (value *= mult));
 
     value = Math.round(value);
@@ -30,10 +28,18 @@ function getHappiness(npc, npcs, biomes) {
   }
 }
 
-function getHappinessMultiplier(npc, thing) {
-  if (npc.Loved.includes(thing)) return 0.88;
-  if (npc.Liked.includes(thing)) return 0.94;
-  if (npc.Disliked.includes(thing)) return 1.06;
-  if (npc.Hated.includes(thing)) return 1.12;
+function getHappinessModifier(npc, otherNPC) {
+  if (npc.Loved.NPCs.includes(otherNPC)) return 0.88;
+  if (npc.Liked.NPCs.includes(otherNPC)) return 0.94;
+  if (npc.Disliked.NPCs.includes(otherNPC)) return 1.06;
+  if (npc.Hated.NPCs.includes(otherNPC)) return 1.12;
+  return 1;
+}
+
+function getBiomeModifier(npc, biome) {
+  if (npc.Loved.Biome == biome) return 0.88;
+  if (npc.Liked.Biome == biome) return 0.94;
+  if (npc.Disliked.Biome == biome) return 1.06;
+  if (npc.Hated.Biome == biome) return 1.12;
   return 1;
 }

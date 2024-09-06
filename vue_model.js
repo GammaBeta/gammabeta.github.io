@@ -10,7 +10,7 @@ Vue.component("biome", {
   },
   data() {
     return {
-      image: "images/emotes/" + this.name.replaceAll(" ", "") + ".png",
+      image: "images/biome/" + this.name.replaceAll(" ", "") + ".png",
     };
   },
   methods: {
@@ -34,10 +34,22 @@ Vue.component("npc", {
         <div>Hates: Being alone</div>
       </div>
       <div class="tooltip" :style="styleObj" v-else>
-        <div>Loves: <img v-for="love in npc.Loved" :src="emoteImage(love)" :title="love"></div>
-        <div>Likes: <img v-for="like in npc.Liked" :src="emoteImage(like)" :title="like"></div>
-        <div>Dislikes: <img v-for="dislike in npc.Disliked" :src="emoteImage(dislike)" :title="dislike"></div>
-        <div>Hates: <img v-for="hate in npc.Hated" :src="emoteImage(hate)" :title="hate"></div>
+        <div>Loves: 
+          <img v-if="npc.Loved.Biome != null" :src="biomeImage(npc.Loved.Biome)" :title="npc.Loved.Biome">
+          <img v-for="love in npc.Loved.NPCs" :src="emoteImage(love)" :title="love">
+        </div>
+        <div>Likes: 
+          <img v-if="npc.Liked.Biome != null" :src="biomeImage(npc.Liked.Biome)" :title="npc.Liked.Biome">
+          <img v-for="like in npc.Liked.NPCs" :src="emoteImage(like)" :title="like">
+        </div>
+        <div>Dislikes: 
+          <img v-if="npc.Disliked.Biome != null" :src="biomeImage(npc.Disliked.Biome)" :title="npc.Disliked.Biome">
+          <img v-for="dislike in npc.Disliked.NPCs" :src="emoteImage(dislike)" :title="dislike">
+        </div>
+        <div>Hates: 
+          <img v-if="npc.Hated.Biome != null" :src="biomeImage(npc.Hated.Biome)" :title="npc.Hated.Biome">
+          <img v-for="hate in npc.Hated.NPCs" :src="emoteImage(hate)" :title="hate">
+        </div>
       </div>
   </div>
   `,
@@ -48,7 +60,7 @@ Vue.component("npc", {
   },
   data() {
     return {
-      imageUrl: "images/" + this.npc.Name.replaceAll(" ", "") + ".png",
+      imageUrl: "images/npc/" + this.npc.Name.replaceAll(" ", "") + ".png",
       styleObj: {
         left: "100%",
       },
@@ -56,7 +68,10 @@ Vue.component("npc", {
   },
   methods: {
     emoteImage(name) {
-      return "images/emotes/" + name.replaceAll(" ", "") + ".png";
+      return "images/emote/" + name.replaceAll(" ", "") + ".png";
+    },
+    biomeImage(name) {
+      return "images/biome/" + name.replaceAll(" ", "") + ".png";
     },
     removeNpc() {
       this.$emit("removeNpc");
@@ -84,7 +99,7 @@ Vue.component("npc", {
           this.npc.Disliked.length,
           this.npc.Hated.length
         ) *
-          32
+          40
       );
     },
   },
