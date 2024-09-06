@@ -10,6 +10,7 @@ const Biomes = {
   Space: "Space",
   Hallow: "Hallow",
   Mushroom: "Mushroom",
+  Verdant: "Verdant",
   Crag: "Crag",
 };
 
@@ -281,6 +282,7 @@ const NpcModels = {
       .hatesNPCs(Npcs.ArmsDealer)
       .build(),
     new NpcBuilder(Npcs.Dryad)
+      .lovesBiome(Biomes.Verdant)
       .lovesNPCs(Npcs.EmpressOfLight, Npcs.Plantera)
       .likesBiome(Biomes.Jungle)
       .likesNPCs(
@@ -301,6 +303,7 @@ const NpcModels = {
       )
       .build(),
     new NpcBuilder(Npcs.Painter)
+      .lovesBiome(Biomes.Verdant)
       .lovesNPCs(Npcs.Dryad)
       .likesBiome(Biomes.Jungle)
       .likesNPCs(
