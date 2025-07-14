@@ -126,3 +126,10 @@ a {
 .header {
   font-size: 18px;
 }
+
+/* Used to make drag and dropping less annoying */
+.prevent-select, .prevent-select * {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}

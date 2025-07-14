@@ -22,7 +22,7 @@ Vue.component("biome", {
 
 Vue.component("npc", {
   template: `
-    <div class="npc" @mouseenter="onHover">
+    <div class="npc prevent-select" @mouseenter="onHover">
       <img :src="imageUrl" />
       <div class="name">{{this.npc.Name}}</div>
       <div :class="{ happy: this.happiness <= 90, sad: this.happiness > 100 }" v-text="this.happiness + '%'"></div>
@@ -107,7 +107,7 @@ Vue.component("npc", {
 
 Vue.component("town", {
   template: `
-    <div class="ui-frame town">
+    <div class="ui-frame town" @dragenter="onDragEnter" @dragover="onDragOver" @drop="onDrop" >
       <div style='display: flex; justify-content: space-evenly' :style="{width: townUIWidth + 'px'}">
         <biome v-for="biome in biomes" :key="biome"
           :name="biome" :enabled="townData.biomes.includes(biome)"
@@ -160,6 +160,16 @@ Vue.component("town", {
     biomeImage(biome) {
       return "images/" + biome.replaceAll(" ", "") + ".png";
     },
+    onDragEnter(event) {
+      event.preventDefault();
+    },
+    onDragOver(event) {
+      event.preventDefault();
+    },
+    onDrop(event) {
+      this.$emit("stealNpcByString", this.id, event.dataTransfer.getData("text/plain"));
+      event.preventDefault();
+    },
   },
 });
 
@@ -169,7 +179,7 @@ let app = new Vue({
     <div>
         <town v-for="(town, i) in towns" :key="i" :id="i"
           :townData="town" :availableNpcs="availableNpcs"
-          @removeTown="removeTown" @removeNpc="removeNpc" @addNpc="addNpc"
+          @removeTown="removeTown" @removeNpc="removeNpc" @addNpc="addNpc" @stealNpcByString="stealNpcByString"
           @toggleBiome="toggleBiome"></town>
         <div @click="createTown" class="ui-frame transparent">
             <div>Add next town</div>
@@ -200,6 +210,27 @@ let app = new Vue({
       const npcs = this.towns[town].npcs;
       const index = npcs.indexOf(npc);
       this.towns[town].npcs.splice(index, 1);
+    },
+    stealNpcByString(targetTownId, string) {
+      const npcNameWithoutSpace = string.slice(string.lastIndexOf("/") + 1,string.lastIndexOf(".") ).replaceAll(" ", "")
+      for (const group in NpcModels) {
+        for (npc of NpcModels[group]) {
+          if (npc.Name.replaceAll(" ", "") === npcNameWithoutSpace) {
+            this.stealNpc(targetTownId, npc);
+            return ;
+          }
+        }
+      }
+    },
+    stealNpc(targetTownId, npc) {
+      for (const town of this.towns) {
+        const index = town.npcs.indexOf(npc);
+        if (index != -1) {
+          town.npcs.splice(index, 1);
+          break;
+        }
+      }
+      this.addNpc(targetTownId, npc);
     },
     toggleBiome(town, biome) {
       const biomes = this.towns[town].biomes;
